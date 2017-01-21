@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4131.robot.subsystems;
 
 import org.usfirst.frc.team4131.robot.RobotMap;
-import org.usfirst.frc.team4131.robot.commands.Move;
 
 import com.ctre.CANTalon;
 
@@ -19,11 +18,9 @@ public class DriveBase extends Subsystem {
 		//rightMotor1 = new TalonSRX(RobotMap.DRIVE_RIGHT_MOTOR1);
 		//rightMotor2 = new TalonSRX(RobotMap.DRIVE_RIGHT_MOTOR2);
 	}
-	
 	@Override
-	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
-		setDefaultCommand(new Move());
+	protected void initDefaultCommand(){
+		
 	}
 	
 	// When called, sets the speed of the motors

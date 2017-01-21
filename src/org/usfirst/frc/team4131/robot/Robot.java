@@ -1,16 +1,11 @@
 
 package org.usfirst.frc.team4131.robot;
 
+import org.usfirst.frc.team4131.robot.subsystems.DriveBase;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team4131.robot.commands.Auto;
-import org.usfirst.frc.team4131.robot.commands.Move;
-import org.usfirst.frc.team4131.robot.subsystems.DriveBase;
 
 
 /**
@@ -22,23 +17,14 @@ import org.usfirst.frc.team4131.robot.subsystems.DriveBase;
  */
 public class Robot extends IterativeRobot {
 
-	public static final Auto auto = new Auto();
-	
-
-	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
-
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	@Override
-	public void robotInit() {
+	public void robotInit(){
 		drive = new DriveBase();
 		oi = new OI();
-		chooser.addDefault("Default Auto", new Auto());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
 	}
 
 	/**
@@ -69,18 +55,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+		
 	}
 
 	/**
@@ -93,26 +68,15 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
-		if (autonomousCommand != null)
-			autonomousCommand.cancel();
+		
 	}
 
 	/**
 	 * This function is called periodically during operator control
 	 */
 	@Override
-	public void teleopPeriodic() {
-		Move now = new Move();
+	public void teleopPeriodic(){
 		Scheduler.getInstance().run();
-		while(isEnabled())
-		{
-			now.execute();
-			
-		}
 	}
 
 	/**
