@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team4131.robot;
 
 import java.io.IOException;
@@ -19,18 +18,7 @@ import org.usfirst.frc.team4131.robot.subsystems.DriveBase;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-=======
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team4131.robot.commands.Auto;
-import org.usfirst.frc.team4131.robot.commands.Move;
-import org.usfirst.frc.team4131.robot.subsystems.DriveBase;
-
->>>>>>> origin/master
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -40,7 +28,6 @@ import org.usfirst.frc.team4131.robot.subsystems.DriveBase;
  * directory.
  */
 public class Robot extends IterativeRobot {
-<<<<<<< HEAD
 	public static double CURRENT_X;
 	public static double CURRENT_Y;
 	public static double CURRENT_ANGLE;
@@ -72,20 +59,11 @@ public class Robot extends IterativeRobot {
 		}
 		autonomous = new Autonomous();
 	}
-=======
-
-	public static final Auto auto = new Auto();
-	
-
-	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
->>>>>>> origin/master
 
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
-<<<<<<< HEAD
 	public void robotInit() {
 		if (RobotMap.ROBOT_TYPE == RobotMap.ELECT_BOT_NUM) {
 			// electricalBot Code
@@ -106,15 +84,6 @@ public class Robot extends IterativeRobot {
 			
 			SmartDashboard.putNumber("TARGET RPM", 4500);
 		}
-=======
-	@Override
-	public void robotInit() {
-		drive = new DriveBase();
-		oi = new OI();
-		chooser.addDefault("Default Auto", new Auto());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
->>>>>>> origin/master
 	}
 
 	/**
@@ -122,25 +91,15 @@ public class Robot extends IterativeRobot {
 	 * You can use it to reset any subsystem information you want to clear when
 	 * the robot is disabled.
 	 */
-<<<<<<< HEAD
 	public void disabledInit() {
 	}
 
-=======
-	@Override
-	public void disabledInit() {
-
-	}
-
-	@Override
->>>>>>> origin/master
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		dashboard();
 //		try{camera.execute();}catch(Exception e){}
 	}
 
-<<<<<<< HEAD
 	public void autonomousInit() {
 		drive.resetEncoders();
 		CURRENT_ANGLE = sensors.getAngle();
@@ -153,31 +112,6 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = autonomous.assembleCommand();//procedural selection
 		}
 		SmartDashboard.putString("-Autonomous Command", String.valueOf(autonomousCommand));
-=======
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
-	 *
-	 * You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
-	 */
-	@Override
-	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
->>>>>>> origin/master
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}
@@ -185,10 +119,6 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during autonomous
 	 */
-<<<<<<< HEAD
-=======
-	@Override
->>>>>>> origin/master
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		CURRENT_ANGLE = sensors.getAngle();
@@ -196,26 +126,14 @@ public class Robot extends IterativeRobot {
 //		camera.execute();
 	}
 
-<<<<<<< HEAD
 	public void teleopInit() {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();// End autonomous when teleop starts
-=======
-	@Override
-	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
-		if (autonomousCommand != null)
-			autonomousCommand.cancel();
->>>>>>> origin/master
 	}
 
 	/**
 	 * This function is called periodically during operator control
 	 */
-<<<<<<< HEAD
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		dashboard();
@@ -256,33 +174,5 @@ public class Robot extends IterativeRobot {
 			SmartDashboard.putNumber("Right Encoder", drive.getRightEncoder());
 			SmartDashboard.putNumber("Left Encoder", drive.getLeftEncoder());
 		}	
-=======
-	@Override
-	public void teleopPeriodic() {
-		Move now = new Move();
-		Scheduler.getInstance().run();
-		while(isEnabled())
-		{
-			now.execute();
-			
-		}
-	}
-
-	/**
-	 * This function is called periodically during test mode
-	 */
-	@Override
-	public void testPeriodic() {
-		LiveWindow.run();
-	}
-	//Subsystems
-	public static DriveBase drive;
-	public static OI oi;
-	//OI
-	public static final OI OI = new OI();
-	
-	public Robot(){
-		
->>>>>>> origin/master
 	}
 }

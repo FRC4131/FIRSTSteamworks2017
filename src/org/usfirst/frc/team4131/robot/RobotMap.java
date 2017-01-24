@@ -17,7 +17,6 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	// Ports for motor controllers, encoders, etc
-<<<<<<< HEAD
 	/**
 	 * Configuration for the RoboRio(s)
 	 */
@@ -67,17 +66,4 @@ public class RobotMap {
 	public static final int DRIVE_RIGHT_ENCODERB = 3;
 	
 	public static final double DRIVE_RATIO = 1;// = ((125D + 3D / 16D) / 1033D);
-=======
-	public static final int LEFT_JOYSTICK = 0;
-
-	public static final int RIGHT_JOYSTICK = 1;
-	
-	public static final int DRIVE_LEFT_MOTOR1 = 3;
-
-	public static final int DRIVE_LEFT_MOTOR2 = 4;
-
-	//public static final int DRIVE_RIGHT_MOTOR1 = 2;
-
-	//public static final int DRIVE_RIGHT_MOTOR2 = 3;
->>>>>>> origin/master
 }
