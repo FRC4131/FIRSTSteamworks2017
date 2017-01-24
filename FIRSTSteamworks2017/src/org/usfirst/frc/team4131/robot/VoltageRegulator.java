@@ -1,8 +1,6 @@
 package org.usfirst.frc.team4131.robot;
 
-//import edu.wpi.first.wpilibj.CANTalon;
-
-public class VoltageRegulator extends Robot {
+public class VoltageRegulator {
 	double lMP1, lMP2, rMP1, rMP2;
 	double lMPP1, lMPP2, rMPP1, rMPP2;
 	double totalVoltage = 0;
