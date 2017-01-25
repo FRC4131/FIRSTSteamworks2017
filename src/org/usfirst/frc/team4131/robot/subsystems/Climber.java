@@ -6,6 +6,15 @@ import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+/**
+ * ========== Test Procedure ==========
+ * Run on Robot in a Box
+ * We will call {@link #engage()} in teleop, and expect the motor to spin at half speed.
+ * We will call {@link #climb()} in teleop, and expect the motor to spin at full speed in the same direction as {{@link #engage()}.
+ * ====================================
+ * @author Ian
+ * @since 1/24/2017
+ */
 public class Climber extends Subsystem{
 	private CANTalon motor;
 	public Climber(){
@@ -13,7 +22,7 @@ public class Climber extends Subsystem{
 	}
 	@Override
 	protected void initDefaultCommand(){}
-	public void engageRope(){
+	public void engage(){
 		motor.set(0.5);
 	}
 	public void climb(){
