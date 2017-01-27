@@ -9,4 +9,9 @@ package org.usfirst.frc.team4131.robot;
 public class RobotMap {
 	public static final int HOPPER_MOTOR = 9;
 	public static final int FLYWHEEL_MOTOR = 11;
+	public static final int SHOOTER_MOTOR1 = 7;
+	public static final int SHOOTER_MOTOR2 = 8;
+	public static final int CLIMBER_MOTOR1 = 12;
+	public static final int CLIMBER_MOTOR2 = 13;
+
 }
