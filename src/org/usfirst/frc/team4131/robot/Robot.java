@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4131.robot;
 
-import org.usfirst.frc.team4131.robot.subsystems.Climber;
 import org.usfirst.frc.team4131.robot.subsystems.Hopper;
 import org.usfirst.frc.team4131.robot.subsystems.Shooter;
 
@@ -19,7 +18,6 @@ public class Robot extends IterativeRobot{
 	public static final Hopper hopper = new Hopper();
 	public static final OI OI = new OI();
 	public static final Shooter shooter = new Shooter();
-	public static final Climber climber = new Climber();
 	public Robot(){
 		
 	}

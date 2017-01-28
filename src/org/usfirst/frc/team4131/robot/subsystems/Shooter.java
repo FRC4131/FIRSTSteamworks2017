@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * ========== Test Procedure ==========
  * Ran on Robot in a Box
- * We will enable teleop, and expect both motors to turn at maximum speed in the same direction.
+ * We will enable teleop, and expect both motors to turn at maximum speed in the same direction. Both run1() and run2() should run.
  * Test passed
  * ====================================
  * @author Matthew
@@ -27,11 +27,19 @@ public class Shooter extends Subsystem {
 			shooter_motor2 = new CANTalon(RobotMap.SHOOTER_MOTOR2);
 
 	}
-    public void run() {
+    public void run1() {
     	shooter_motor1.set(1);
+    }
+    public void run2() {
     	shooter_motor2.set(1);
     }
-    public void stop() {
+    public void stop1() {
+    	shooter_motor1.set(0);
+    }
+    public void stop2() {
+    	shooter_motor2.set(0);
+    }
+    public void stop_all() {
     	shooter_motor1.set(0);
     	shooter_motor2.set(0);
     }
