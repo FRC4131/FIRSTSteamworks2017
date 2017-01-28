@@ -10,8 +10,8 @@ public class Hopper extends Subsystem {
 	private CANTalon hopperMotor;
 	private CANTalon feederMotor;
 	public Hopper(){
-		hopperMotor = new CANTalon(RobotMap.HOPPERMOTOR);
-		feederMotor = new CANTalon(RobotMap.FEEDERMOTOR);
+		hopperMotor = new CANTalon(RobotMap.HOPPER_MOTOR);
+		feederMotor = new CANTalon(RobotMap.FEEDER_MOTOR);
 	}
 	protected void initDefaultCommand() {
 	
