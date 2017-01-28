@@ -12,19 +12,4 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	public Joystick leftStick;
-	public Joystick rightStick;
-
-	public OI() {
-		leftStick = new Joystick(RobotMap.LEFT_JOYSTICK);
-		rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);
-	}
-	
-	public double getLeftSpeed() {
-		return Math.pow(leftStick.getRawAxis(1), 3) * (ToggleDirection.isForward() ? -1 : 1);
-	}
-
-	public double getRightSpeed() {
-		return Math.pow(rightStick.getRawAxis(1), 3) * (ToggleDirection.isForward() ? -1 : 1);
-	}
 }
