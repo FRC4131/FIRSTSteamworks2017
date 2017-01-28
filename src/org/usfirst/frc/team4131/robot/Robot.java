@@ -28,36 +28,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	public static double CURRENT_X;
-	public static double CURRENT_Y;
-	public static double CURRENT_ANGLE;
 
-//	public static Cameras camera;
-	public static Sensors sensors;
 	public static DriveBase drive;
-//	public static Shooter shooter;
-//	public static Collector collector;
 	public static OI oi;
-
-	private Autonomous autonomous;
-	private Configuration<Boolean> version;
-	private Command autonomousCommand;
 
 	public Robot() {
 		super();
-		String whoami = null;
-		byte[] buffer = null;
-		Path configPath = FileSystems.getDefault().getPath(RobotMap.CONFIG_FILENAME);
-		try {
-			buffer = Files.readAllBytes(configPath);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		if (buffer != null) {
-			whoami = new String(buffer);
-			RobotMap.ROBOT_TYPE = RobotMap.robotType(whoami);
-		}
-		autonomous = new Autonomous();
 	}
 
 	/**
@@ -65,25 +41,8 @@ public class Robot extends IterativeRobot {
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
-		if (RobotMap.ROBOT_TYPE == RobotMap.ELECT_BOT_NUM) {
-			// electricalBot Code
-		} else {
-//			camera = new Cameras();
-			sensors = new Sensors();
-			drive = new DriveBase();
-//			shooter = new Shooter();
-//			collector = new Collector();
-//			pdp = new PowerDistributionPanel(RobotMap.PDP);
-			
-			oi = new OI();
-
-			version = new Configuration<Boolean>("AutonVersion").put("Low-bar", true).put("Procedural", false);
-			version.init();
-			autonomous = new Autonomous();
-			autonomous.init();
-			
-			SmartDashboard.putNumber("TARGET RPM", 4500);
-		}
+		drive = new DriveBase();
+		oi = new OI();
 	}
 
 	/**
@@ -95,49 +54,25 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void disabledPeriodic() {
-		Scheduler.getInstance().run();
-		dashboard();
-//		try{camera.execute();}catch(Exception e){}
 	}
 
 	public void autonomousInit() {
 		drive.resetEncoders();
-		CURRENT_ANGLE = sensors.getAngle();
-		CURRENT_X = 0;// TODO whatever our starting position is based on
-		CURRENT_Y = 0;// TODO whatever our starting position is based on
-		sensors.resetGyro();
-		if (version.value()){
-//			autonomousCommand = ;
-		}else{
-			autonomousCommand = autonomous.assembleCommand();//procedural selection
-		}
-		SmartDashboard.putString("-Autonomous Command", String.valueOf(autonomousCommand));
-		if (autonomousCommand != null)
-			autonomousCommand.start();
 	}
 
 	/**
 	 * This function is called periodically during autonomous
 	 */
 	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
-		CURRENT_ANGLE = sensors.getAngle();
-		dashboard();
-//		camera.execute();
 	}
 
 	public void teleopInit() {
-		if (autonomousCommand != null)
-			autonomousCommand.cancel();// End autonomous when teleop starts
 	}
 
 	/**
 	 * This function is called periodically during operator control
 	 */
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
-		dashboard();
-//		try{camera.execute();}catch(Exception e){}
 	}
 
 	public void testInit() {
@@ -148,31 +83,7 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during test mode
 	 */
 	public void testPeriodic() {
-		Scheduler.getInstance().run();
-		dashboard();
-//		try{camera.execute();}catch(Exception e){}
 	}
 
-	public static double constrain(double value, double min, double max) {
-		double trueMin = Math.min(min, max), trueMax = Math.max(min, max);
-		return Math.min(Math.max(value, trueMin), trueMax);
-	}
-
-	private void dashboard() {
-		if (RobotMap.ROBOT_TYPE == RobotMap.ELECT_BOT_NUM) {
-			// electricalBot Code
-		} else {
-//			SmartDashboard.putNumber("Snooter Speed", shooter.getRate());
-//			SmartDashboard.putNumber("Shooter Command", shooter.getSpeed());
-			
-			SmartDashboard.putNumber("Drive Distance", drive.getDistance());
-			SmartDashboard.putNumber("Gyro Angle", sensors.getAngle());
-			SmartDashboard.putNumber("Robot X", CURRENT_X);
-			SmartDashboard.putNumber("Robot Y", CURRENT_Y);
-			SmartDashboard.putNumber("Right Tread Command", drive.getRightCommand());
-			SmartDashboard.putNumber("Left Tread Command", drive.getLeftCommand());
-			SmartDashboard.putNumber("Right Encoder", drive.getRightEncoder());
-			SmartDashboard.putNumber("Left Encoder", drive.getLeftEncoder());
-		}	
 	}
 }
