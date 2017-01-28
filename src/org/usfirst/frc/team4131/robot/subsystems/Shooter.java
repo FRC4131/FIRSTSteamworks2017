@@ -20,27 +20,16 @@ public class Shooter extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 	}
-		private CANTalon shooter_motor1;
-		private CANTalon shooter_motor2;
+		private CANTalon flywheel;
 		public Shooter(){
-			shooter_motor1 = new CANTalon(RobotMap.SHOOTER_MOTOR1);
-			shooter_motor2 = new CANTalon(RobotMap.SHOOTER_MOTOR2);
+			flywheel = new CANTalon(RobotMap.FLYWHEEL);
 
 	}
-    public void run1() {
-    	shooter_motor1.set(1);
-    }
-    public void run2() {
-    	shooter_motor2.set(1);
+    public void run() {
+    	flywheel.set(1);
     }
     public void stop1() {
-    	shooter_motor1.set(0);
+    	flywheel.set(0);
     }
-    public void stop2() {
-    	shooter_motor2.set(0);
-    }
-    public void stop_all() {
-    	shooter_motor1.set(0);
-    	shooter_motor2.set(0);
-    }
+   
 }
