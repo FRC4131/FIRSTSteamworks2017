@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4131.robot;
 
+import org.usfirst.frc.team4131.robot.subsystems.Climber;
 import org.usfirst.frc.team4131.robot.subsystems.Hopper;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -15,6 +16,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 public class Robot extends IterativeRobot{
 	//Subsystems
 	public static final Hopper hopper = new Hopper();
+	public static final Climber climber = new Climber();
 	//OI
 	public static final OI OI = new OI();
 	
