@@ -8,10 +8,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Hopper extends Subsystem {
 	private CANTalon hopperMotor;
-	private CANTalon feederMotor;
 	public Hopper(){
 		hopperMotor = new CANTalon(RobotMap.HOPPER_MOTOR);
-		feederMotor = new CANTalon(RobotMap.FEEDER_MOTOR);
 	}
 	protected void initDefaultCommand() {
 	
@@ -19,13 +17,7 @@ public class Hopper extends Subsystem {
 	public void runHopper() {
 		hopperMotor.set(1);
 	}
-	public void runFeeder() {
-		feederMotor.set(1);
-	}
 	public void stopHopper() {
 		hopperMotor.set(0);
-	}
-	public void stopFeeder() {
-		feederMotor.set(0);
 	}
 }
