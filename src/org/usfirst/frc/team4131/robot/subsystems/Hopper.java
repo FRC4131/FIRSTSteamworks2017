@@ -7,25 +7,25 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Hopper extends Subsystem {
-	private CANTalon hopper_motor;
-	private CANTalon feeder_motor;
+	private CANTalon hopperMotor;
+	private CANTalon feederMotor;
 	public Hopper(){
-		hopper_motor = new CANTalon(RobotMap.HOPPER_MOTOR);
-		feeder_motor = new CANTalon(RobotMap.FEEDER_MOTOR);
+		hopperMotor = new CANTalon(RobotMap.HOPPERMOTOR);
+		feederMotor = new CANTalon(RobotMap.FEEDERMOTOR);
 	}
 	protected void initDefaultCommand() {
 	
 	}
-	public void run_hopper() {
-		hopper_motor.set(1);
+	public void runHopper() {
+		hopperMotor.set(1);
 	}
-	public void run_feeder() {
-		feeder_motor.set(1);
+	public void runFeeder() {
+		feederMotor.set(1);
 	}
-	public void stop_hopper() {
-		hopper_motor.set(0);
+	public void stopHopper() {
+		hopperMotor.set(0);
 	}
-	public void stop_feeder() {
-		feeder_motor.set(0);
+	public void stopFeeder() {
+		feederMotor.set(0);
 	}
 }

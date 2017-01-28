@@ -26,10 +26,10 @@ public class Shooter extends Subsystem {
 			flywheel = new CANTalon(RobotMap.FLYWHEEL);
 
 	}
-    public void run() {
+    public void runFlywheel() {
     	flywheel.set(1);
     }
-    public void stop1() {
+    public void stopFlywheel() {
     	flywheel.set(0);
     }
    
