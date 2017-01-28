@@ -26,6 +26,7 @@ public class RobotMap {
 	public static final int FLYWHEEL_MOTOR = 11;
 
 
+
 	public static final int DRIVE_LEFT_MOTOR1 = 0;
 
 	public static final int DRIVE_LEFT_MOTOR2 = 1;
@@ -41,4 +42,7 @@ public class RobotMap {
 	public static final int DRIVE_RIGHT_ENCODERA = 2;
 
 	public static final int DRIVE_RIGHT_ENCODERB = 3;
+
+	public static final int CLIMBER_MOTOR = 12;
+
 }

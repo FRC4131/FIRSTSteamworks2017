@@ -1,11 +1,16 @@
 package org.usfirst.frc.team4131.robot;
 
+
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 import org.usfirst.frc.team4131.robot.subsystems.DriveBase;
+
+import org.usfirst.frc.team4131.robot.subsystems.Climber;
+import org.usfirst.frc.team4131.robot.subsystems.Hopper;
+
 
 import org.usfirst.frc.team4131.robot.subsystems.Hopper;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -22,6 +27,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 	public static final Hopper hopper = new Hopper();
+
 	public static DriveBase drive;
 	public static OI oi;
 
@@ -77,6 +83,50 @@ public class Robot extends IterativeRobot {
 	 */
 	public void testPeriodic() {
 	}
+
+
+	public static final Climber climber = new Climber();
+	//OI
+	public static final OI OI = new OI();
+	
+	public Robot(){
+		
+	}
+	@Override
+	public void robotInit(){
+		
+	}
+	@Override
+	public void autonomousInit(){
+		
+	}
+	@Override
+	public void autonomousPeriodic(){
+		Scheduler.getInstance().run();
+	}
+	@Override
+	public void teleopInit(){
+		
+	}
+	@Override
+	public void teleopPeriodic(){
+		Scheduler.getInstance().run();
+	}
+	@Override
+	public void testInit(){
+		
+	}
+	@Override
+	public void testPeriodic(){
+		Scheduler.getInstance().run();
+	}
+	@Override
+	public void disabledInit(){
+		
+	}
+	@Override
+	public void disabledPeriodic(){
+		Scheduler.getInstance().run();
 
 	}
 }
