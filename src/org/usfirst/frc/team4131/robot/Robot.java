@@ -5,16 +5,9 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import org.usfirst.frc.team4131.robot.autonomous.Autonomous;
-import org.usfirst.frc.team4131.robot.autonomous.Configuration;
-//import org.usfirst.frc.team4131.robot.commands.VisionFire;
-//import org.usfirst.frc.team4131.robot.subsystems.Cameras;
-//import org.usfirst.frc.team4131.robot.subsystems.Collector;
-import org.usfirst.frc.team4131.robot.subsystems.Sensors;
-//import org.usfirst.frc.team4131.robot.subsystems.Shooter;
 import org.usfirst.frc.team4131.robot.subsystems.DriveBase;
 
-//import edu.wpi.first.wpilibj.I2C;
+import org.usfirst.frc.team4131.robot.subsystems.Hopper;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -28,7 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
+	public static final Hopper hopper = new Hopper();
 	public static DriveBase drive;
 	public static OI oi;
 
