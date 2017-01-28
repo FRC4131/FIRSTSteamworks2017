@@ -12,9 +12,6 @@ public class DriveBase extends Subsystem {
 	private Talon leftMotor1, leftMotor2, rightMotor1, rightMotor2;
 	private Encoder leftEncoder, rightEncoder;
 	
-	//Revolutions per second per 2 inches
-	public int rPsPi = 1;
-	
 	// Connects the motors
 	public DriveBase(){
 		super();
@@ -22,9 +19,8 @@ public class DriveBase extends Subsystem {
 		leftMotor2 = new Talon(RobotMap.DRIVE_LEFT_MOTOR2);
 		rightMotor1 = new Talon(RobotMap.DRIVE_RIGHT_MOTOR1);
 		rightMotor2 = new Talon(RobotMap.DRIVE_RIGHT_MOTOR2);
-		leftEncoder = new Encoder(RobotMap.DRIVE_LEFT_ENCODERA, RobotMap.DRIVE_LEFT_ENCODERB, false);// would spin clockwise or +; T=-, f=-?
-		rightEncoder = new Encoder(RobotMap.DRIVE_RIGHT_ENCODERA, RobotMap.DRIVE_RIGHT_ENCODERB,
-				/*RobotMap.ROBOT_TYPE == RobotMap.COMP_BOT_NUM*/ false);// would spin counter-clockwise or -; boolean reverses direction
+		leftEncoder = new Encoder(RobotMap.DRIVE_LEFT_ENCODERA, RobotMap.DRIVE_LEFT_ENCODERB, false);
+		rightEncoder = new Encoder(RobotMap.DRIVE_RIGHT_ENCODERA, RobotMap.DRIVE_RIGHT_ENCODERB,false);
 		leftEncoder.setDistancePerPulse(RobotMap.DRIVE_RATIO);
 		rightEncoder.setDistancePerPulse(RobotMap.DRIVE_RATIO);
 	}
@@ -63,7 +59,6 @@ public class DriveBase extends Subsystem {
 	 * @return (double) Average of two encoders
 	 */
 	public double getDistance() {
-		//		return (leftEncoder.get() + rightEncoder.get()) / 2.0;
 		return (leftEncoder.getDistance() + rightEncoder.getDistance()) / 2.0;
 	}
 	public int getLeftEncoder(){
