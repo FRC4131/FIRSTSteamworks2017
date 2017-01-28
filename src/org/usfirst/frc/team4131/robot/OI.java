@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 public class OI {
 	public Joystick leftStick;
 	public Joystick rightStick;
-	private Button cameraToggle;
 
 	public OI() {
 		leftStick = new Joystick(RobotMap.LEFT_JOYSTICK);
