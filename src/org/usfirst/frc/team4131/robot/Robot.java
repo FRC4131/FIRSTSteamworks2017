@@ -1,8 +1,6 @@
 package org.usfirst.frc.team4131.robot;
 
-import org.usfirst.frc.team4131.robot.subsystems.Climber;
-import org.usfirst.frc.team4131.robot.subsystems.Hopper;
-import org.usfirst.frc.team4131.robot.subsystems.Shooter;
+import org.usfirst.frc.team4131.robot.subsystems.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
