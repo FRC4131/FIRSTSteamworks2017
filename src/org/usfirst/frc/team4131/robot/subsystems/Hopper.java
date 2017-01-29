@@ -16,21 +16,22 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @since 1/20/2017
  */
 public class Hopper extends Subsystem {
-	private CANTalon hopper_motor;
-	private CANTalon flywheel_motor;
+	private CANTalon hopperMotor;
+	private CANTalon feederMotor;
 	public Hopper(){
-		hopper_motor = new CANTalon(RobotMap.HOPPER_MOTOR);
-		flywheel_motor = new CANTalon(RobotMap.FLYWHEEL_MOTOR);
+		hopperMotor = new CANTalon(RobotMap.HOPPER_MOTOR);
+		feederMotor = new CANTalon(RobotMap.FEEDER_MOTOR);
 	}
 	protected void initDefaultCommand() {
 	
 	}
-	public void run() {
-		hopper_motor.set(1);
-		flywheel_motor.set(1);
+	public void runHopper() {
+		hopperMotor.set(1);
+		feederMotor.set(1);
 	}
-	public void stop() {
-		hopper_motor.set(0);
-		flywheel_motor.set(0);
+	public void stopHopper() {
+		hopperMotor.set(0);
+		feederMotor.set(0);
 	}
+	
 }
