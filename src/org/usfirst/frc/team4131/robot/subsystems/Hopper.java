@@ -25,11 +25,11 @@ public class Hopper extends Subsystem {
 	protected void initDefaultCommand() {
 	
 	}
-	public void runHopper() {
+	public void run() {
 		hopperMotor.set(1);
 		feederMotor.set(1);
 	}
-	public void stopHopper() {
+	public void stop() {
 		hopperMotor.set(0);
 		feederMotor.set(0);
 	}
