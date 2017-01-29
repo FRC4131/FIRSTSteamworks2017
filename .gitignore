@@ -3,3 +3,8 @@
 /.project
 /.settings/
 /bin/
+
+#FIRST
+/build/
+/dist/
+/sysProps.xml

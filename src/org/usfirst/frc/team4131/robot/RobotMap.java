@@ -6,6 +6,8 @@ package org.usfirst.frc.team4131.robot;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-public class RobotMap{
-	
+public class RobotMap {
+	public static final int HOPPER_MOTOR = 9;
+	public static final int FEEDER_MOTOR = 8;
+	public static final int CLIMBER_MOTOR = 12;
 }
