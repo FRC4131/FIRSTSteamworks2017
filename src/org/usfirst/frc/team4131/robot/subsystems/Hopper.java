@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * ========== Test Procedure ==========
  * Ran on Robot in a Box
- * We will enable teleop, and expect both motors to turn at maximum speed in the same direction.
+ * We will enable teleop, and expect motor to turn at maximum speed.
  * Test passed
  * ====================================
  * @author Matthew
