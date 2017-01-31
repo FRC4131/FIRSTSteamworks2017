@@ -6,22 +6,27 @@ import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+/**
+ * ========== Test Procedure ==========
+ * Ran on Robot in a Box
+ * We will enable teleop, and expect motor to turn at maximum speed.
+ * Test passed
+ * ====================================
+ * @author Matthew
+ * @since 1/20/2017
+ */
 public class Hopper extends Subsystem {
-	private CANTalon hopper_motor;
-	private CANTalon flywheel_motor;
+	private CANTalon hopperMotor;
 	public Hopper(){
-		hopper_motor = new CANTalon(RobotMap.HOPPER_MOTOR);
-		flywheel_motor = new CANTalon(RobotMap.FLYWHEEL_MOTOR);
+		hopperMotor = new CANTalon(RobotMap.HOPPER_MOTOR);
 	}
 	protected void initDefaultCommand() {
 	
 	}
 	public void run() {
-		hopper_motor.set(1);
-		flywheel_motor.set(1);
+		hopperMotor.set(1);
 	}
 	public void stop() {
-		hopper_motor.set(0);
-		flywheel_motor.set(0);
+		hopperMotor.set(0);
 	}
-}
+	}
