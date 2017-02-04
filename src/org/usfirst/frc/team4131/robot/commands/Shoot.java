@@ -4,6 +4,15 @@ import org.usfirst.frc.team4131.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+* ========== Test Procedure ==========
+* Run on Robot in a Box
+* We will bind this command to a button in the OI and expect the hopper to run when it is pressed.
+* Tests passed
+* ====================================
+* @author Ian
+* @since 2/4/2017
+*/
 public class Shoot extends Command{
 	public Shoot(){
 		requires(Robot.hopper);
