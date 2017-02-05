@@ -29,4 +29,4 @@ public class Hopper extends Subsystem {
 	public void stop() {
 		hopperMotor.set(0);
 	}
-}
+	}
