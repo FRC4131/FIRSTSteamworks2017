@@ -5,7 +5,15 @@ import org.usfirst.frc.team4131.robot.RobotMap;
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-
+/**
+ * ========== Test Procedure ==========
+ * Ran on Robot in a Box
+ * We will enable teleop, and expect motor to turn at maximum speed.
+ * Test passed
+ * ====================================
+ * @author Calvin
+ * @since 2/4/2017
+ */
 public class DriveBase extends Subsystem {
 	private CANTalon leftMotor, rightMotor;
 	public DriveBase(){
