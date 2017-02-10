@@ -16,10 +16,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @since 2/4/2017
  */
 public class DriveBase extends Subsystem {
-	private Talon leftMotor, rightMotor;
+	private CANTalon leftMotor, rightMotor;
 	public DriveBase(){
-		leftMotor = new Talon(RobotMap.DRIVE_LEFT);
-		rightMotor = new Talon(RobotMap.DRIVE_RIGHT);
+		leftMotor = new CANTalon(RobotMap.DRIVE_LEFT);
+		rightMotor = new CANTalon(RobotMap.DRIVE_RIGHT);
 	}
 	protected void initDefaultCommand(){
 		
