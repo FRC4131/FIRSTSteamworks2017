@@ -1,11 +1,20 @@
 package org.usfirst.frc.team4131.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4131.robot.Robot;
 
-public class Drive extends Command {
+import edu.wpi.first.wpilibj.command.Command;
+/**
+ * ========== Test Procedure ==========
+ * Ran on Robot in a Box
+ * We will enable teleop, and expect both motors to turn corresponding to the joysticks.
+ * Test passed
+ * ====================================
+ * @author Calvin
+ * @since 2/10/2017
+ */
+public class Move extends Command {
 	
-	public Drive() {
+	public Move() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.drive);
