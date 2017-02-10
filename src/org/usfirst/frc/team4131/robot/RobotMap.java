@@ -7,6 +7,8 @@ package org.usfirst.frc.team4131.robot;
  * floating around.
  */
 public class RobotMap {
+	public static final int LEFT_JOYSTICK = 0;
+	public static final int RIGHT_JOYSTICK = 1;
 	public static final int FLYWHEEL_MOTOR = 7;
 	public static final int FEEDER_MOTOR = 8;
 	public static final int HOPPER_MOTOR = 9;
