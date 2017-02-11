@@ -15,22 +15,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author Matthew
  * @since 1/20/2017
  */
-public class Hopper extends Subsystem{
+public class Hopper extends Subsystem {
 	private CANTalon hopperMotor;
-	
 	public Hopper(){
 		hopperMotor = new CANTalon(RobotMap.HOPPER_MOTOR);
 	}
+	protected void initDefaultCommand() {
 	
-	protected void initDefaultCommand(){
-		
 	}
-	
-	public void run(){
+	public void run() {
 		hopperMotor.set(1);
 	}
-	
-	public void stop(){
+	public void stop() {
 		hopperMotor.set(0);
 	}
-}
+	}
