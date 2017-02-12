@@ -16,4 +16,6 @@ public class RobotMap {
 	public static final int COLLECTOR_MOTOR = 10;
 	public static final int DRIVE_LEFT = 0;
 	public static final int DRIVE_RIGHT = 1;
+	public static final int UNLOAD = 2;
+	public static final int LAUNCHPAD = 2;
 }

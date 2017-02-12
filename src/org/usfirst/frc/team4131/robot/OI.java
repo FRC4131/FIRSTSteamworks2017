@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4131.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -9,10 +11,17 @@ import edu.wpi.first.wpilibj.Joystick;
 public class OI{
 	public Joystick leftStick;
 	public Joystick rightStick;
+	private Joystick launchpad;
+	
+	private Button spitOut;
 	
 	public OI() {
 		leftStick = new Joystick(RobotMap.LEFT_JOYSTICK);
 		rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);
+		
+		launchpad = new Joystick(RobotMap.LAUNCHPAD);
+		spitOut = new JoystickButton(launchpad, RobotMap.UNLOAD);
+		
 		
 	}
 }
