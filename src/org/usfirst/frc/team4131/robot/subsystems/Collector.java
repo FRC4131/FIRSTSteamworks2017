@@ -38,9 +38,5 @@ public class Collector extends Subsystem {
 		motor.set(0);
 
 	}
-	public void spitOut() {
-		motor.set(-1);
-
-	}
 
 }

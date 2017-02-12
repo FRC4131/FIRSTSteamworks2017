@@ -4,7 +4,7 @@ import org.usfirst.frc.team4131.robot.subsystems.*;
 import org.usfirst.frc.team4131.robot.commands.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-
+import org.usfirst.frc.team4131.robot.OI;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -46,6 +46,7 @@ public class Robot extends IterativeRobot{
 	public void teleopPeriodic(){
 		Scheduler.getInstance().run();
 		move.execute();
+		
 	}
 	@Override
 	public void testInit(){

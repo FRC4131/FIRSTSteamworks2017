@@ -3,7 +3,8 @@ package org.usfirst.frc.team4131.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
+import org.usfirst.frc.team4131.robot.commands.*;
+import org.usfirst.frc.team4131.robot.subsystems.*;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -21,8 +22,12 @@ public class OI{
 		
 		launchpad = new Joystick(RobotMap.LAUNCHPAD);
 		spitOut = new JoystickButton(launchpad, RobotMap.UNLOAD);
-		
-		
+		spitOut.whileHeld(new SpitOut());
 	}
+	
+	public boolean getSpitOut() {
+		return spitOut.get();
+	}
+	
 }
 
