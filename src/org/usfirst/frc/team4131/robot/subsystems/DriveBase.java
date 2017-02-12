@@ -4,6 +4,7 @@ import org.usfirst.frc.team4131.robot.RobotMap;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * ========== Test Procedure ==========
@@ -16,9 +17,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveBase extends Subsystem {
 	private CANTalon leftMotor, rightMotor;
+	private DoubleSolenoid leftShifter, rightShifter;
 	public DriveBase(){
 		leftMotor = new CANTalon(RobotMap.DRIVE_LEFT);
 		rightMotor = new CANTalon(RobotMap.DRIVE_RIGHT);
+		leftShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.LEFT_SHIFTER1, RobotMap.LEFT_SHIFTER2);
+		rightShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.RIGHT_SHIFTER1, RobotMap.RIGHT_SHIFTER2);
 	}
 	protected void initDefaultCommand(){
 		
@@ -26,5 +30,13 @@ public class DriveBase extends Subsystem {
 	public void move(double speed1, double speed2) {
 		leftMotor.set(speed1);
 		rightMotor.set(speed2);
+	}
+	public void shiftUp(){
+		leftShifter.set(DoubleSolenoid.Value.kForward);
+		rightShifter.set(DoubleSolenoid.Value.kForward);
+	}
+	public void shiftDown(){
+		leftShifter.set(DoubleSolenoid.Value.kReverse);
+		rightShifter.set(DoubleSolenoid.Value.kReverse);
 	}
 }
