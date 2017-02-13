@@ -4,9 +4,17 @@ import org.usfirst.frc.team4131.robot.Robot;
 import org.usfirst.frc.team4131.robot.RobotMap;
 
 import com.ctre.CANTalon;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.command.Command;
 
+import edu.wpi.first.wpilibj.command.Command;
+/**
+ * ========== Test Procedure ==========
+ * Ran on Robot in a Box
+ * We will enable teleop, and expect reverse at maximum speed while the 'Spit Out' button is pressed.
+ * Test passed
+ * ====================================
+ * @author Calvin
+ * @since 2/12/2017
+ */
 public class SpitOut extends Command {
 	
 	CANTalon motor;

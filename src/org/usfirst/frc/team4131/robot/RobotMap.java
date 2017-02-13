@@ -13,9 +13,13 @@ public class RobotMap {
 	public static final int FEEDER_MOTOR = 8;
 	public static final int HOPPER_MOTOR = 9;
 	public static final int CLIMBER_MOTOR = 12;
-	public static final int COLLECTOR_MOTOR = 0;
-	public static final int DRIVE_LEFT = 0;
-	public static final int DRIVE_RIGHT = 1;
+	public static final int COLLECTOR_MOTOR = 10;
 	public static final int UNLOAD = 2;
 	public static final int LAUNCHPAD = 2;
+	public static final int DRIVE_LEFT1 = 1;
+	public static final int DRIVE_LEFT2 = 2;
+	public static final int DRIVE_LEFT3 = 3;
+	public static final int DRIVE_RIGHT1 = 4;
+	public static final int DRIVE_RIGHT2 = 5;
+	public static final int DRIVE_RIGHT3 = 6;
 }

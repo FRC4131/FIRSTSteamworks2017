@@ -4,7 +4,6 @@ import org.usfirst.frc.team4131.robot.RobotMap;
 
 import com.ctre.CANTalon;
 
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * ========== Test Procedure ==========
@@ -16,16 +15,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @since 2/4/2017
  */
 public class DriveBase extends Subsystem {
-	private Talon leftMotor, rightMotor;
+	private CANTalon leftMotor1, leftMotor2, leftMotor3, rightMotor1, rightMotor2, rightMotor3;
 	public DriveBase(){
-		leftMotor = new Talon(RobotMap.DRIVE_LEFT);
-		rightMotor = new Talon(RobotMap.DRIVE_RIGHT);
+		leftMotor1 = new CANTalon(RobotMap.DRIVE_LEFT1);
+		leftMotor2 = new CANTalon(RobotMap.DRIVE_LEFT2);
+		leftMotor3 = new CANTalon(RobotMap.DRIVE_LEFT3);
+		rightMotor1 = new CANTalon(RobotMap.DRIVE_RIGHT1);
+		rightMotor2 = new CANTalon(RobotMap.DRIVE_RIGHT2);
+		rightMotor3 = new CANTalon(RobotMap.DRIVE_RIGHT3);
 	}
 	protected void initDefaultCommand(){
 		
 	}
 	public void move(double speed1, double speed2) {
-		leftMotor.set(-speed1);
-		rightMotor.set(-speed2);
+		leftMotor1.set(-speed1);
+		leftMotor2.set(-speed1);
+		leftMotor3.set(-speed1);
+		rightMotor1.set(-speed2);
+		rightMotor2.set(-speed2);
+		rightMotor3.set(-speed2);
 	}
 }
