@@ -1,7 +1,11 @@
 package org.usfirst.frc.team4131.robot.subsystems;
 
 import org.usfirst.frc.team4131.robot.RobotMap;
+
 import com.ctre.CANTalon;
+import com.ctre.CANTalon.FeedbackDevice;
+import com.ctre.CANTalon.TalonControlMode;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -22,6 +26,11 @@ public class Shooter extends Subsystem {
 	public Shooter(){
 		feederMotor = new CANTalon(RobotMap.FEEDER_MOTOR);
 		flywheelMotor = new CANTalon(RobotMap.FLYWHEEL_MOTOR);
+		flywheelMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		flywheelMotor.configEncoderCodesPerRev(7);
+		flywheelMotor.changeControlMode(TalonControlMode.Speed);
+		flywheelMotor.setPID(0.3,0,0);
+		flywheelMotor.enableControl();
 	}
 	public void runFeeder() {
 		feederMotor.set(1);
@@ -30,9 +39,10 @@ public class Shooter extends Subsystem {
 		feederMotor.set(0);
 	}
 	public void runFlywheel() {
-		flywheelMotor.set(1);
+		flywheelMotor.set(10);
 	}
 	public void stopFlywheel() {
 		flywheelMotor.set(0);
 	}
 }
+
