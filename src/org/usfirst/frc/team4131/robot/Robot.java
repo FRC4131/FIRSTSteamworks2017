@@ -1,9 +1,10 @@
 package org.usfirst.frc.team4131.robot;
 
 import org.usfirst.frc.team4131.robot.subsystems.*;
+import org.usfirst.frc.team4131.robot.commands.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-
+import org.usfirst.frc.team4131.robot.OI;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -14,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 public class Robot extends IterativeRobot{
 	//Subsystems
 	public static final DriveBase drive = new DriveBase();
+	public static final Move move = new Move();
 	public static final Hopper hopper = new Hopper();
 	public static final Climber climber = new Climber();
 	public static final Shooter shooter = new Shooter();
@@ -43,6 +45,7 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void teleopPeriodic(){
 		Scheduler.getInstance().run();
+		
 	}
 	@Override
 	public void testInit(){
