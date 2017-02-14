@@ -7,17 +7,30 @@ package org.usfirst.frc.team4131.robot;
  * floating around.
  */
 public class RobotMap {
+	//Input devices
 	public static final int LEFT_JOYSTICK = 0;
 	public static final int RIGHT_JOYSTICK = 1;
+	public static final int LAUNCHPAD = 2;
+	
+	//Buttons
+	public static final int UNLOAD = 2;
+	public static final int ENGAGE_CLIMB = 3;
+	
+	//Motors
+	public static final int DRIVE_LEFT1 = 0;
+	public static final int DRIVE_LEFT2 = 2;
+	public static final int DRIVE_LEFT3 = 3;
+	public static final int DRIVE_RIGHT1 = 1;
+	public static final int DRIVE_RIGHT2 = 5;
+	public static final int DRIVE_RIGHT3 = 6;
 	public static final int FLYWHEEL_MOTOR = 7;
 	public static final int FEEDER_MOTOR = 8;
 	public static final int HOPPER_MOTOR = 9;
-	public static final int CLIMBER_MOTOR = 12;
 	public static final int COLLECTOR_MOTOR = 10;
-	public static final int DRIVE_LEFT1 = 1;
-	public static final int DRIVE_LEFT2 = 2;
-	public static final int DRIVE_LEFT3 = 3;
-	public static final int DRIVE_RIGHT1 = 4;
-	public static final int DRIVE_RIGHT2 = 5;
-	public static final int DRIVE_RIGHT3 = 6;
+	public static final int CLIMBER_MOTOR = 12;
+	
+
+
+	
+	
 }
