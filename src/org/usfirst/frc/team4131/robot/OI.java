@@ -14,7 +14,6 @@ public class OI{
 	public Joystick launchpad;
 	
 	private Button spitOut;
-	private Button engageClimb;
 	
 	public OI() {
 		leftStick = new Joystick(RobotMap.LEFT_JOYSTICK);
@@ -25,16 +24,10 @@ public class OI{
 		spitOut = new JoystickButton(launchpad, RobotMap.UNLOAD);
 		spitOut.whileHeld(new SpitOut());
 		
-		engageClimb = new JoystickButton(launchpad, RobotMap.ENGAGE_CLIMB);
-		engageClimb.whileHeld(new EngageClimber());
 	}
 	
 	public boolean getSpitOut() {
 		return spitOut.get();
-	}
-	
-	public boolean getEngageClimb() {
-		return engageClimb.get();
 	}
 	
 }
