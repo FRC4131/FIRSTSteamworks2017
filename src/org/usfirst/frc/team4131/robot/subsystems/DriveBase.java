@@ -38,9 +38,9 @@ public class DriveBase extends Subsystem {
 	protected void initDefaultCommand(){
 		
 	}
-	public void move(double speed1, double speed2) {
-		leftMotor.set(speed1);
-		rightMotor.set(speed2);
+	public void move(double left, double right) {
+		leftMotor.set(left);
+		rightMotor.set(right);
 	}
 	public void shiftUp(){
 		leftShifter.set(DoubleSolenoid.Value.kForward);
