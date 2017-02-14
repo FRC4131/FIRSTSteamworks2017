@@ -18,8 +18,8 @@ public class DriveBase extends Subsystem {
 	private CANTalon leftMotor1, rightMotor1;
 	
 	public DriveBase(){
-		leftMotor1 = new CANTalon(RobotMap.DRIVE_LEFT1);
-		rightMotor1 = new CANTalon(RobotMap.DRIVE_RIGHT1);
+		leftMotor = new CANTalon(RobotMap.DRIVE_LEFT1);
+		rightMotor = new CANTalon(RobotMap.DRIVE_RIGHT1);
 		leftMotor1.setInverted(true);
 	}
 	
@@ -28,7 +28,7 @@ public class DriveBase extends Subsystem {
 	}
 	
 	public void move(double speed1, double speed2) {
-		leftMotor1.set(speed1);
-		rightMotor1.set(speed2);
+		leftMotor.set(speed1);
+		rightMotor.set(speed2);
 	}
 }
