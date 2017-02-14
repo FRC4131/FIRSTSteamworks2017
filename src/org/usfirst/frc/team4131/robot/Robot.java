@@ -17,6 +17,7 @@ public class Robot extends IterativeRobot{
 	public static final Hopper hopper = new Hopper();
 	public static final Climber climber = new Climber();
 	public static final Shooter shooter = new Shooter();
+	public static final Collector collector = new Collector();
 	//OI
 	public static final OI OI = new OI();
 	
