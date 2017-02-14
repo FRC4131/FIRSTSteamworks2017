@@ -22,6 +22,7 @@ public class DriveBase extends Subsystem {
 		rightMotor1 = new CANTalon(RobotMap.DRIVE_RIGHT1);
 		leftMotor1.setInverted(true);
 	}
+	
 	protected void initDefaultCommand(){
 		
 	}
