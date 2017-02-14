@@ -13,7 +13,7 @@ public class OI{
 	public OI(){
 		Joystick joystick = new Joystick(0);
 		JoystickButton button1 = new JoystickButton(joystick , 1);
-		button1.whenPressed(new ChargeShooter());
+		button1.whenPressed(new ChargeShooter()); 
 	}
 }
 
