@@ -11,23 +11,9 @@ import org.usfirst.frc.team4131.robot.commands.*;
 public class OI{
 	public Joystick leftStick;
 	public Joystick rightStick;
-	public Joystick launchpad;
-	
-	private Button spitOut;
 	
 	public OI() {
-		leftStick = new Joystick(RobotMap.LEFT_JOYSTICK);
-		rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);
 		
-		launchpad = new Joystick(RobotMap.LAUNCHPAD);
-		
-		spitOut = new JoystickButton(launchpad, RobotMap.UNLOAD);
-		spitOut.whileHeld(new SpitOut());
-		
-	}
-	
-	public boolean getSpitOut() {
-		return spitOut.get();
 	}
 	
 }
