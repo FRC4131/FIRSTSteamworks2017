@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4131.robot;
 
-import org.usfirst.frc.team4131.robot.commands.ChargeShooter;
+import org.usfirst.frc.team4131.robot.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -11,9 +11,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI{
 	public OI(){
-		Joystick joystick = new Joystick(0);
-		JoystickButton button1 = new JoystickButton(joystick , 1);
-		button1.whenPressed(new ChargeShooter()); 
+		Joystick leftStick = new Joystick(0);
+		Joystick rightStick = new Joystick(1);
 	}
 }
-
+ 
