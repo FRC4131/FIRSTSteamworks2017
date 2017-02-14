@@ -21,12 +21,10 @@ public class Robot extends IterativeRobot{
 	//OI
 	public static final OI OI = new OI();
 	
-	public Robot(){
-		
-	}
+	public Robot(){}
 	@Override
 	public void robotInit(){
-		
+		drive.resetGyro();
 	}
 	@Override
 	public void autonomousInit(){

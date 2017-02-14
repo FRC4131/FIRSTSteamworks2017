@@ -7,6 +7,7 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * ========== Test Procedure ==========
@@ -21,6 +22,7 @@ public class DriveBase extends Subsystem {
 	private CANTalon leftMotor, rightMotor;
 	private DoubleSolenoid leftShifter, rightShifter;
 	private Encoder leftEncoder, rightEncoder;
+	private AHRS imu;
 	public DriveBase(){
 		leftMotor = new CANTalon(RobotMap.DRIVE_LEFT);
 		rightMotor = new CANTalon(RobotMap.DRIVE_RIGHT);
@@ -31,6 +33,7 @@ public class DriveBase extends Subsystem {
 		rightEncoder = new Encoder(RobotMap.ENCODER_RIGHT1, RobotMap.ENCODER_RIGHT2);
 		leftEncoder.setDistancePerPulse(RobotMap.DRIVE_INCHES_PER_PULSE);
 		rightEncoder.setDistancePerPulse(RobotMap.DRIVE_INCHES_PER_PULSE);
+		imu = new AHRS(SPI.Port.kMXP);
 	}
 	protected void initDefaultCommand(){
 		
@@ -56,5 +59,14 @@ public class DriveBase extends Subsystem {
 	}
 	public PIDSource getDistanceSource(){
 		return leftEncoder;
+	}
+	public void resetGyro(){
+		imu.reset();
+	}
+	public double getAngle(){
+		return imu.getYaw();
+	}
+	public PIDSource getAngleSource(){
+		return imu;
 	}
 }
