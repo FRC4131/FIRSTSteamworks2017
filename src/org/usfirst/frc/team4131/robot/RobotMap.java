@@ -19,4 +19,9 @@ public class RobotMap {
 	public static final int LEFT_SHIFTER2 = 1;
 	public static final int RIGHT_SHIFTER1 = 2;
 	public static final int RIGHT_SHIFTER2 = 3;
+	public static final int ENCODER_LEFT1 = 0;
+	public static final int ENCODER_LEFT2 = 1;
+	public static final int ENCODER_RIGHT1 = 2;
+	public static final int ENCODER_RIGHT2 = 3;
+	public static final int DRIVE_INCHES_PER_PULSE = 1;
 }
