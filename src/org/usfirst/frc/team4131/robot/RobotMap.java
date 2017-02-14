@@ -18,11 +18,7 @@ public class RobotMap {
 	
 	//Motors
 	public static final int DRIVE_LEFT1 = 0;
-	public static final int DRIVE_LEFT2 = 2;
-	public static final int DRIVE_LEFT3 = 3;
 	public static final int DRIVE_RIGHT1 = 1;
-	public static final int DRIVE_RIGHT2 = 5;
-	public static final int DRIVE_RIGHT3 = 6;
 	public static final int FLYWHEEL_MOTOR = 7;
 	public static final int FEEDER_MOTOR = 8;
 	public static final int HOPPER_MOTOR = 9;
