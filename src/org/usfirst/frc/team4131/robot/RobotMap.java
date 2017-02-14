@@ -10,11 +10,6 @@ public class RobotMap {
 	//Input devices
 	public static final int LEFT_JOYSTICK = 0;
 	public static final int RIGHT_JOYSTICK = 1;
-	public static final int LAUNCHPAD = 2;
-	
-	//Buttons
-	public static final int UNLOAD = 2;
-	public static final int ENGAGE_CLIMB = 3;
 	
 	//Motors
 	public static final int DRIVE_LEFT1 = 0;
