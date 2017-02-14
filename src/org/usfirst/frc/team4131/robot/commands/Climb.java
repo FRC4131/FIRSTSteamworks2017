@@ -4,15 +4,15 @@ import org.usfirst.frc.team4131.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Climber extends Command{
-	public Climber() {
+public class Climb extends Command{
+	public Climb() {
 		requires(Robot.climber);
 	}
 	protected void initialize(){
 		
 	}
 	protected void execute(){
-		
+		Robot.climber.climb();
 	}
 	@Override 
 	protected boolean isFinished() {
@@ -20,9 +20,9 @@ public class Climber extends Command{
 		return false;
 	}
 	protected void end(){
-		
+		Robot.climber.stop();
 	}
 	protected void interrupted(){
-		
+		Robot.climber.stop();
 	}
 }
