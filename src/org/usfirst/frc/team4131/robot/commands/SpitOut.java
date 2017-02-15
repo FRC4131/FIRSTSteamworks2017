@@ -30,7 +30,7 @@ public class SpitOut extends Command {
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		Robot.collector.eject();
+		Robot.collector.unload();
 	}
 
 	@Override
