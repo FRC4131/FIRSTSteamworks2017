@@ -12,6 +12,9 @@ public class OI{
 	public OI() {
 		leftStick = new Joystick(RobotMap.LEFT_JOYSTICK);
 		rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);
+
+		
+		
 	}
 }
 
