@@ -1,8 +1,6 @@
 package org.usfirst.frc.team4131.robot.commands;
 
 import org.usfirst.frc.team4131.robot.Robot;
-import org.usfirst.frc.team4131.robot.RobotMap;
-
 
 import edu.wpi.first.wpilibj.command.Command;
 /**
@@ -35,8 +33,7 @@ public class SpitOut extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return !Robot.OI.getSpitOut();
+		return false;
 	}
 
 	@Override
