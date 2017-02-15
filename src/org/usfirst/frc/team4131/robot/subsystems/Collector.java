@@ -38,5 +38,8 @@ public class Collector extends Subsystem {
 		motor.set(0);
 
 	}
-
+	
+	public void unload() {
+		motor.set(-1);
+	}
 }

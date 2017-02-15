@@ -3,7 +3,6 @@ package org.usfirst.frc.team4131.robot.commands;
 import org.usfirst.frc.team4131.robot.Robot;
 import org.usfirst.frc.team4131.robot.RobotMap;
 
-import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.command.Command;
 /**
@@ -17,12 +16,11 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class SpitOut extends Command {
 	
-	CANTalon motor;
 	
 	public SpitOut() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		motor = new CANTalon(RobotMap.COLLECTOR_MOTOR);
+		requires(Robot.collector);
 	}
 	@Override
 	protected void initialize() {
@@ -32,7 +30,7 @@ public class SpitOut extends Command {
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		motor.set(-1);
+		Robot.collector.unload();
 	}
 
 	@Override
@@ -44,13 +42,13 @@ public class SpitOut extends Command {
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		motor.set(0);
+		Robot.collector.stop();
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-		motor.set(0);
+		Robot.collector.stop();
 	}
 
 }
