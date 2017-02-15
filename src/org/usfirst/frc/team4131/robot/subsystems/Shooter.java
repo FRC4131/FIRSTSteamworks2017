@@ -39,7 +39,7 @@ public class Shooter extends Subsystem {
 		feederMotor.set(0);
 	}
 	public void runFlywheel() {
-		flywheelMotor.set(10);
+		flywheelMotor.set(1);
 	}
 	public void stopFlywheel() {
 		flywheelMotor.set(0);
