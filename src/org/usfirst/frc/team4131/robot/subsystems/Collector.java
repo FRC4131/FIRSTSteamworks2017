@@ -17,26 +17,29 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @since 1/28/2017
  * 
  */
-public class Collector extends Subsystem {
-
-	@Override
-	protected void initDefaultCommand() {
-	}
-
-	// TODO Auto-generated method stub
-	CANTalon motor;
-
-	public Collector() {
+public class Collector extends Subsystem{
+	private static final double STALL_CURRENT = 20;
+	private CANTalon motor;
+	
+	public Collector(){
 		motor = new CANTalon(RobotMap.COLLECTOR_MOTOR);
 	}
-
-	public void collect() {
+	
+	@Override
+	protected void initDefaultCommand(){}
+	
+	public void collect(){
 		motor.set(1);
 	}
-
-	public void stop() {
+	
+	public void stop(){
 		motor.set(0);
-
 	}
 
+	public void eject(){
+		motor.set(-1);
+	}
+	public boolean isStalling(){
+		return motor.getOutputCurrent() >= STALL_CURRENT;
+	}
 }
