@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * 
  */
 public class Collector extends Subsystem{
-	private static final double STALL_CURRENT = 0.1;//TODO fill in number
+	private static final double STALL_CURRENT = 20;
 	private CANTalon motor;
 	
 	public Collector(){
@@ -39,6 +39,6 @@ public class Collector extends Subsystem{
 		motor.set(-1);
 	}
 	public boolean isStalling(){
-		return motor.getOutputCurrent() < STALL_CURRENT;
+		return motor.getOutputCurrent() >= STALL_CURRENT;
 	}
 }
