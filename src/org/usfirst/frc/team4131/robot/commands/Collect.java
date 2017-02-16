@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4131.robot.commands;
 
 import org.usfirst.frc.team4131.robot.Robot;
-import org.usfirst.frc.team4131.robot.commands.*;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -13,9 +13,10 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Matthew
  * @since 2/14/2017
  */
-
 public class Collect extends Command {
-
+	public Collect(){
+		requires(Robot.collector);
+	}
 	@Override
 	protected void initialize() {
 		

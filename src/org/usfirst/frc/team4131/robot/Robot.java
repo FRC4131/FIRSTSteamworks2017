@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4131.robot;
 
 import org.usfirst.frc.team4131.robot.subsystems.*;
-import org.usfirst.frc.team4131.robot.commands.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import org.usfirst.frc.team4131.robot.OI;
@@ -15,11 +14,10 @@ import org.usfirst.frc.team4131.robot.OI;
 public class Robot extends IterativeRobot{
 	//Subsystems
 	public static final DriveBase drive = new DriveBase();
-	public static final Move move = new Move();
+	public static final Collector collector = new Collector();
 	public static final Hopper hopper = new Hopper();
 	public static final Climber climber = new Climber();
 	public static final Shooter shooter = new Shooter();
-	public static final Collector collector = new Collector();
 	//OI
 	public static final OI OI = new OI();
 	
