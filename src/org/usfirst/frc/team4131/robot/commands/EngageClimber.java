@@ -3,22 +3,21 @@ package org.usfirst.frc.team4131.robot.commands;
 import org.usfirst.frc.team4131.robot.Robot;
 import org.usfirst.frc.team4131.robot.RobotMap;
 
-import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 public class EngageClimber extends Command {
-	CANTalon motor;
+	
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		motor = new CANTalon(RobotMap.CLIMBER_MOTOR);
+		requires(Robot.climber);
 	}
 
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		motor.set(0.5);
+		Robot.climber.engage();
 	}
 
 	@Override
@@ -30,13 +29,13 @@ public class EngageClimber extends Command {
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		motor.set(0);
+		Robot.climber.stop();
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-		motor.set(0);
+		Robot.climber.stop();
 	}
 
 }
