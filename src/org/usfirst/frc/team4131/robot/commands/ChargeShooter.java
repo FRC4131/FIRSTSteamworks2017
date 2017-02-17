@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  * ========== Test Procedure ==========
  * Run on Robot in a Box
- * I will press button one on the left joystick, and one of the motors will move at full speed.
+ * I will press button one on the left joystick, and the flywheel motor will move at full speed.
  * Tests passed
  * ====================================
  * @author Matthew
- * @since 2/10/2017
+ * @since 2/16/2017
  */
 
 public class ChargeShooter extends Command {
