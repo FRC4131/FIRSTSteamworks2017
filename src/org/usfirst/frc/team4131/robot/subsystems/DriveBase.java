@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4131.robot.subsystems;
 
 import org.usfirst.frc.team4131.robot.RobotMap;
-
+import org.usfirst.frc.team4131.robot.commands.Move;
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -35,8 +35,9 @@ public class DriveBase extends Subsystem {
 		rightEncoder.setDistancePerPulse(RobotMap.DRIVE_INCHES_PER_PULSE);
 		imu = new AHRS(SPI.Port.kMXP);
 	}
+	
 	protected void initDefaultCommand(){
-		
+		setDefaultCommand(new Move());
 	}
 	public void move(double left, double right) {
 		leftMotor.set(left);
