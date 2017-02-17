@@ -20,7 +20,7 @@ public class ChargeShooter extends Command {
 	
 	}
 	protected void execute() {
-	Robot.shooter.runFlywheel();	
+		Robot.shooter.runFlywheel();	
 	}
 	protected boolean isFinished() {
 		return false;
