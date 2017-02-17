@@ -25,6 +25,9 @@ public class ChargeShooter extends Command {
 	protected boolean isFinished() {
 		return false;
 	}
+	protected void end() {
+		Robot.shooter.stopFlywheel();
+	}
 	protected void interrupted() {
 		Robot.shooter.stopFlywheel();
 	}
