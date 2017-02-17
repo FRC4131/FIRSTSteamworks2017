@@ -4,6 +4,15 @@ import org.usfirst.frc.team4131.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ * ========== Test Procedure ==========
+ * Run on Robot in a Box
+ * We will bind this trigger to the left trigger, and expect it to control the climber.
+ * Tests passed
+ * ====================================
+ * @author Alex
+ * @since 2/16/2017
+ */
 public class Climb extends Command{
 	public Climb() {
 		requires(Robot.climber);
@@ -16,7 +25,6 @@ public class Climb extends Command{
 	}
 	@Override 
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	protected void end(){
