@@ -7,11 +7,12 @@ import org.usfirst.frc.team4131.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class EngageClimber extends Command {
-	
+	public EngageClimber() {
+		requires(Robot.climber);
+	}
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		requires(Robot.climber);
 	}
 
 	@Override
