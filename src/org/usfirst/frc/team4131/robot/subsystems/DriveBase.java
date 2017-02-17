@@ -2,13 +2,16 @@ package org.usfirst.frc.team4131.robot.subsystems;
 
 import org.usfirst.frc.team4131.robot.RobotMap;
 import org.usfirst.frc.team4131.robot.commands.Move;
+
 import com.ctre.CANTalon;
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
 /**
  * ========== Test Procedure ==========
  * Ran on Robot in a Box

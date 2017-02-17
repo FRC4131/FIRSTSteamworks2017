@@ -13,8 +13,8 @@ public class RobotMap {
 	public static final int RIGHT_JOYSTICK = 1;
 	
 	//Motors
-	public static final int DRIVE_LEFT = 0;
-	public static final int DRIVE_RIGHT = 1;
+	public static final int DRIVE_LEFT = 1;
+	public static final int DRIVE_RIGHT = 2;
 	public static final int FLYWHEEL_MOTOR = 7;
 	public static final int FEEDER_MOTOR = 8;
 	public static final int HOPPER_MOTOR = 9;
