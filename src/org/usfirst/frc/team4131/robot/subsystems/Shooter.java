@@ -21,8 +21,6 @@ public class Shooter extends Subsystem {
 	protected void initDefaultCommand() {
 	}
 	public Shooter(){
-		feederMotor = new CANTalon(RobotMap.FEEDER_MOTOR);
-		flywheelMotor = new CANTalon(RobotMap.FLYWHEEL_MOTOR);
 	}
 	public void runFeeder() {
 		feederMotor.set(1);
