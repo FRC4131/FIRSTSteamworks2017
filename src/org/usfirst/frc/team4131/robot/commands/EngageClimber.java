@@ -24,7 +24,7 @@ public class EngageClimber extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return !Robot.OI.getEngageClimb();
+		return false;
 	}
 
 	@Override
