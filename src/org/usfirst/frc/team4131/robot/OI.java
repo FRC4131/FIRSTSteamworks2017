@@ -32,6 +32,7 @@ public class OI{
 		collect.whileHeld(new Collect());
 		spitOut.whileHeld(new SpitOut());
 		chargeShooter.whenPressed(chargeShooterCommand);
+		shoot.whileHeld(new Shoot());
 		climb.whileHeld(new Climb());
 		killShooter.cancelWhenPressed(chargeShooterCommand);
 	}
