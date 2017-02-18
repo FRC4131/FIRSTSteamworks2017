@@ -11,7 +11,6 @@ public class RobotMap {
 	//Input devices
 	public static final int LEFT_JOYSTICK = 0;
 	public static final int RIGHT_JOYSTICK = 1;
-	
 	//Motors
 	public static final int DRIVE_LEFT = 1;
 	public static final int DRIVE_RIGHT = 2;

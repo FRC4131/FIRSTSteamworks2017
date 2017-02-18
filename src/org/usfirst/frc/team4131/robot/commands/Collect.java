@@ -19,7 +19,6 @@ public class Collect extends Command {
 	}
 	@Override
 	protected void initialize() {
-		
 	}
 	protected void execute() {
 		Robot.collector.collect();	
@@ -27,5 +26,7 @@ public class Collect extends Command {
 	protected boolean isFinished() {	
 		return false;
 	}
-
+	protected void end() {
+		Robot.collector.stop();
+	}
 }
