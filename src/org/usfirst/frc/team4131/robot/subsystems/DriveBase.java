@@ -15,11 +15,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * ========== Test Procedure ==========
  * Ran on Robot in a Box
- * We will enable teleop, and expect both motors to turn at maximum speed.
- * Test passed
+ * We will call {@link #move(double, double)} in teleopPeriodic and expect both motors to move. The same number to both should make them rotate in opposite directions.
+ * We will report {@link #getAngle()} in teleopPeriodic and expect it to show the robot's angle of rotation about the axis perpendicular to the floor.
+ * We will report {@link #getDistance()} in teleopPeriodic while moving the drive motors and expect the value to change proportional to the motor value.
+ * We will call {@link #shiftUp()} and {@link #shiftDown()} and expect them to set the solenoids to forward or reverse.
+ * Tests passed
  * ====================================
- * @author Calvin
- * @since 2/4/2017
+ * @author Calvin, Ian
+ * @since 2/17/2017
  */
 public class DriveBase extends Subsystem {
 	private CANTalon leftMotor, rightMotor;
