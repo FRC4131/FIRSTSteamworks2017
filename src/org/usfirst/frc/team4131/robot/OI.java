@@ -8,6 +8,17 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
+
+/**
+ * ========== Test Procedure ==========
+ * Ran on Robot in a Box
+ * I will change the Talon id's and test every button and both joysticks to make sure they move the intended motors correctly.
+ * All test passed
+ * ====================================
+ * @author Matthew
+ * @since 2/18/2017
+ */
+
 public class OI{
 	private Joystick leftStick;
 	private Joystick rightStick;
@@ -24,7 +35,7 @@ public class OI{
 		spitOut = new JoystickButton(rightStick , 3);
 		chargeShooter = new JoystickButton(leftStick , 1);
 		shoot = new JoystickButton(rightStick , 1);
-		climb = new JoystickButton(leftStick , 7);
+		climb = new JoystickButton(leftStick , 8);
 		killShooter = new JoystickButton(rightStick , 2);
 		
 		ChargeShooter chargeShooterCommand = new ChargeShooter();
