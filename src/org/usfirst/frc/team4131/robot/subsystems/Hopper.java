@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * ========== Test Procedure ==========
  * Ran on Robot in a Box
  * We will call {@link #agitateFuel()} and {@link #feedShooter()} in teleopPeriodic, and expect both motors to run when teleop is enabled.
+ * Tests passed
  * ====================================
  * @author Matthew, Ian
  * @since 2/18/2017

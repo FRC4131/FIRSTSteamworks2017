@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * ========== Test Procedure ==========
  * Ran on Robot in a Box
  * We will call {@link #runFlywheel()} in teleopPeriodic, and expect the motor to turn at maximum speed when teleop is enabled.
+ * Tests passed
  * ====================================
  * @author Matthew
  * @since 1/28/2017
