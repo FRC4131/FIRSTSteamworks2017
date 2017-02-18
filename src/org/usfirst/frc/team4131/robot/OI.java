@@ -16,5 +16,8 @@ public class OI{
 		
 		
 	}
+	public boolean shiftDown(){
+		return false;
+	}
 }
 

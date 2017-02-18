@@ -29,6 +29,11 @@ public class Move extends Command {
 	public void execute() {
 		// TODO Auto-generated method stub
 		Robot.drive.move(Robot.OI.leftStick.getRawAxis(1), Robot.OI.rightStick.getRawAxis(1));
+		if(Robot.OI.shiftDown()){
+			Robot.drive.shiftDown();
+		}else{
+			Robot.drive.shiftUp();
+		}
 	}
 
 	@Override
