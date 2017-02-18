@@ -21,30 +21,18 @@ public class SpitOut extends Command {
 		requires(Robot.collector);
 	}
 	@Override
-	protected void initialize() {
-		// TODO Auto-generated method stub
-		
+	protected void initialize() {		
 	}
-	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
 		Robot.collector.eject();
 	}
-
-	@Override
 	protected boolean isFinished() {
 		return false;
 	}
-
-	@Override
 	protected void end() {
-		// TODO Auto-generated method stub
 		Robot.collector.stop();
 	}
-
-	@Override
 	protected void interrupted() {
-		// TODO Auto-generated method stub
 		Robot.collector.stop();
 	}
 
