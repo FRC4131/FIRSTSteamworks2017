@@ -31,11 +31,9 @@ public class Collector extends Subsystem{
 	public void collect(){
 		motor.set(1);
 	}
-	
 	public void stop(){
 		motor.set(0);
 	}
-
 	public void eject(){
 		motor.set(-1);
 	}

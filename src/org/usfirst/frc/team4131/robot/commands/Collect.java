@@ -27,5 +27,7 @@ public class Collect extends Command {
 	protected boolean isFinished() {	
 		return false;
 	}
-
+	protected void end() {
+		Robot.collector.stop();
+	}
 }

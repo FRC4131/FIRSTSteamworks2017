@@ -31,4 +31,5 @@ public class ChargeShooter extends Command {
 	protected void interrupted() {
 		Robot.shooter.stopFlywheel();
 	}
+
 }
