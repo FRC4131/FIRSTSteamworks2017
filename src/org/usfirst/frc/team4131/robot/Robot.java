@@ -2,9 +2,10 @@ package org.usfirst.frc.team4131.robot;
 
 import org.usfirst.frc.team4131.robot.subsystems.*;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import org.usfirst.frc.team4131.robot.OI;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -21,13 +22,13 @@ public class Robot extends IterativeRobot{
 	public static final Shooter shooter = new Shooter();
 	//OI
 	public static final OI OI = new OI();
+	public static final Compressor compressor = new Compressor(RobotMap.PCM_ID);
 	
-	public Robot(){
-		
-	}
+	public Robot(){}
 	@Override
 	public void robotInit(){
-		
+		drive.resetGyro();
+		compressor.setClosedLoopControl(true);
 	}
 	@Override
 	public void autonomousInit(){
