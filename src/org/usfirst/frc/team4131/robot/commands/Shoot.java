@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
 * ========== Test Procedure ==========
 * Run on Robot in a Box
-* We will start this command in teleopInit and expect the hopper to run while the robot is enabled in teleop.
+* We will start this command in teleopInit and expect the hopper motor and feeder motor to run while the robot is enabled in teleop.
 * Tests passed
 * ====================================
 * @author Ian
@@ -21,7 +21,8 @@ public class Shoot extends Command{
 	protected void initialize(){}
 	@Override
 	protected void execute(){
-		Robot.hopper.run();
+		Robot.hopper.agitateFuel();
+		Robot.hopper.feedShooter();
 	}
 	@Override
 	protected boolean isFinished(){
@@ -29,10 +30,12 @@ public class Shoot extends Command{
 	}
 	@Override
 	protected void end(){
-		Robot.hopper.stop();
+		Robot.hopper.settleFuel();
+		Robot.hopper.stopFeeder();
 	}
 	@Override
 	protected void interrupted(){
-		Robot.hopper.stop();
+		Robot.hopper.settleFuel();
+		Robot.hopper.stopFeeder();
 	}
 }

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4131.robot;
 
+import org.usfirst.frc.team4131.robot.commands.Shoot;
 import org.usfirst.frc.team4131.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.Compressor;
@@ -40,7 +41,7 @@ public class Robot extends IterativeRobot{
 	}
 	@Override
 	public void teleopInit(){
-		
+		new Shoot().start();
 	}
 	@Override
 	public void teleopPeriodic(){
