@@ -38,7 +38,7 @@ public class OI{
 		chargeShooter = new JoystickButton(leftStick , 1);
 		shoot = new JoystickButton(rightStick , 1);
 		climb = new JoystickButton(leftStick , 7);
-		slowClimb = new JoystickButton(rightStick , 8);
+		slowClimb = new JoystickButton(leftStick , 8);
 		killShooter = new JoystickButton(rightStick , 2);
 		shift = new JoystickButton(rightStick , 6);
 		
