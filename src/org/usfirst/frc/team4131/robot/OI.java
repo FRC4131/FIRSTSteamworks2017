@@ -27,6 +27,7 @@ public class OI{
 	private JoystickButton chargeShooter;
 	private JoystickButton shoot;
 	private JoystickButton climb;
+	private JoystickButton slowClimb;
 	private JoystickButton killShooter;
 	private JoystickButton shift;
 	public OI() {
@@ -36,7 +37,8 @@ public class OI{
 		spitOut = new JoystickButton(rightStick , 3);
 		chargeShooter = new JoystickButton(leftStick , 1);
 		shoot = new JoystickButton(rightStick , 1);
-		climb = new JoystickButton(leftStick , 8);
+		climb = new JoystickButton(leftStick , 7);
+		slowClimb = new JoystickButton(rightStick , 8);
 		killShooter = new JoystickButton(rightStick , 2);
 		shift = new JoystickButton(rightStick , 6);
 		
@@ -47,6 +49,7 @@ public class OI{
 		chargeShooter.whenPressed(chargeShooterCommand);
 		shoot.whileHeld(new Shoot());
 		climb.whileHeld(new Climb());
+		slowClimb.whileHeld(new EngageClimber());
 		killShooter.cancelWhenPressed(chargeShooterCommand);
 	}
 	public double getLeftSpeed() {
