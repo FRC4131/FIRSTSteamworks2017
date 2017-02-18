@@ -9,30 +9,21 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * ========== Test Procedure ==========
  * Ran on Robot in a Box
- * We will enable teleop, and expect both motors to turn at maximum speed in the same direction.
- * Test passed
+ * We will call {@link #runFlywheel()} in teleopPeriodic, and expect the motor to turn at maximum speed when teleop is enabled.
+ * Tests passed
  * ====================================
  * @author Matthew
  * @since 1/28/2017
  */
 
-public class Shooter extends Subsystem {
-	private CANTalon feederMotor = new CANTalon(RobotMap.FEEDER_MOTOR);
+public class Shooter extends Subsystem{
 	private CANTalon flywheelMotor = new CANTalon(RobotMap.FLYWHEEL_MOTOR);
-	protected void initDefaultCommand() {
-	}
-	public Shooter(){
-	}
-	public void runFeeder() {
-		feederMotor.set(1);
-	}
-	public void stopFeeder() {
-		feederMotor.set(0);
-	}
-	public void runFlywheel() {
+	protected void initDefaultCommand(){}
+	public Shooter(){}
+	public void runFlywheel(){
 		flywheelMotor.set(1);
 	}
-	public void stopFlywheel() {
+	public void stopFlywheel(){
 		flywheelMotor.set(0);
 	}
 }
