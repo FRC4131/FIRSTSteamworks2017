@@ -9,24 +9,29 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * ========== Test Procedure ==========
  * Ran on Robot in a Box
- * We will enable teleop, and expect motor to turn at maximum speed.
- * Test passed
+ * We will call {@link #agitateFuel()} and {@link #feedShooter()} in teleopPeriodic, and expect both motors to run when teleop is enabled.
+ * Tests passed
  * ====================================
- * @author Matthew
- * @since 1/20/2017
+ * @author Matthew, Ian
+ * @since 2/18/2017
  */
-public class Hopper extends Subsystem {
-	private CANTalon hopperMotor;
-	public Hopper(){
-		hopperMotor = new CANTalon(RobotMap.HOPPER_MOTOR);
+public class Hopper extends Subsystem{
+	private CANTalon hopperMotor = new CANTalon(RobotMap.HOPPER_MOTOR);
+	private CANTalon feederMotor = new CANTalon(RobotMap.FEEDER_MOTOR);
+	public Hopper(){}
+	protected void initDefaultCommand(){
+		
 	}
-	protected void initDefaultCommand() {
-	
-	}
-	public void run() {
+	public void agitateFuel(){
 		hopperMotor.set(1);
 	}
-	public void stop() {
+	public void settleFuel(){
 		hopperMotor.set(0);
 	}
+	public void feedShooter(){
+		feederMotor.set(1);
 	}
+	public void stopFeeder(){
+		feederMotor.set(0);
+	}
+}
