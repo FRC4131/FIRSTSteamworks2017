@@ -19,7 +19,6 @@ public class Collect extends Command {
 	}
 	@Override
 	protected void initialize() {
-		
 	}
 	protected void execute() {
 		Robot.collector.collect();	

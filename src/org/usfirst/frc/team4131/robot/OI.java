@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4131.robot;
 
+import org.usfirst.frc.team4131.robot.commands.*;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 /**
@@ -9,9 +11,29 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI{
 	public Joystick leftStick;
 	public Joystick rightStick;
+	public JoystickButton collect;
+	public JoystickButton spitOut;
+	public JoystickButton chargeShooter;
+	public JoystickButton shoot;
+	public JoystickButton climb;
+	public JoystickButton killShooter;
 	public OI() {
 		leftStick = new Joystick(RobotMap.LEFT_JOYSTICK);
 		rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);
+		collect = new JoystickButton(leftStick, 4);
+		spitOut = new JoystickButton(rightStick , 3);
+		chargeShooter = new JoystickButton(leftStick , 1);
+		shoot = new JoystickButton(rightStick , 1);
+		climb = new JoystickButton(leftStick , 7);
+		killShooter = new JoystickButton(rightStick , 2);
+		
+		ChargeShooter chargeShooterCommand = new ChargeShooter();
+		
+		collect.whileHeld(new Collect());
+		spitOut.whileHeld(new SpitOut());
+		chargeShooter.whenPressed(chargeShooterCommand);
+		climb.whileHeld(new Climb());
+		killShooter.cancelWhenPressed(chargeShooterCommand);
 	}
 }
 
