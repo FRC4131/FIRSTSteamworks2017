@@ -23,7 +23,7 @@ public class Move extends Command {
 	protected void initialize() {
 	}
 	public void execute() {
-		Robot.drive.move(Robot.OI.leftStick.getRawAxis(1), Robot.OI.rightStick.getRawAxis(1));
+		Robot.drive.move(Robot.OI.getLeftSpeed(), Robot.OI.getRightSpeed());
 	}
 	protected boolean isFinished() {
 		return false;

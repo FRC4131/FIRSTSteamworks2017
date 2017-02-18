@@ -36,5 +36,11 @@ public class OI{
 		climb.whileHeld(new Climb());
 		killShooter.cancelWhenPressed(chargeShooterCommand);
 	}
+	public double getLeftSpeed() {
+		return leftStick.getRawAxis(1);
+	}
+	public double getRightSpeed() {
+		return rightStick.getRawAxis(1);
+	}
 }
 
