@@ -9,14 +9,14 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI{
-	public Joystick leftStick;
-	public Joystick rightStick;
-	public JoystickButton collect;
-	public JoystickButton spitOut;
-	public JoystickButton chargeShooter;
-	public JoystickButton shoot;
-	public JoystickButton climb;
-	public JoystickButton killShooter;
+	private Joystick leftStick;
+	private Joystick rightStick;
+	private JoystickButton collect;
+	private JoystickButton spitOut;
+	private JoystickButton chargeShooter;
+	private JoystickButton shoot;
+	private JoystickButton climb;
+	private JoystickButton killShooter;
 	public OI() {
 		leftStick = new Joystick(RobotMap.LEFT_JOYSTICK);
 		rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);
