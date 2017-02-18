@@ -28,6 +28,7 @@ public class OI{
 	private JoystickButton shoot;
 	private JoystickButton climb;
 	private JoystickButton killShooter;
+	private JoystickButton shift;
 	public OI() {
 		leftStick = new Joystick(RobotMap.LEFT_JOYSTICK);
 		rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);
@@ -37,6 +38,7 @@ public class OI{
 		shoot = new JoystickButton(rightStick , 1);
 		climb = new JoystickButton(leftStick , 8);
 		killShooter = new JoystickButton(rightStick , 2);
+		shift = new JoystickButton(rightStick , 6);
 		
 		ChargeShooter chargeShooterCommand = new ChargeShooter();
 		
@@ -52,6 +54,9 @@ public class OI{
 	}
 	public double getRightSpeed() {
 		return rightStick.getRawAxis(1);
+	}
+	public boolean shiftDown() {
+		return shift.get();
 	}
 }
 
