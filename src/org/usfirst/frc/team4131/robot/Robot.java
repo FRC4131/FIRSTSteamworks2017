@@ -1,5 +1,8 @@
 package org.usfirst.frc.team4131.robot;
 
+import org.usfirst.frc.team4131.robot.subsystems.*;
+
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
@@ -12,16 +15,20 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  */
 public class Robot extends IterativeRobot{
 	//Subsystems
-	
+	public static final DriveBase drive = new DriveBase();
+	public static final Collector collector = new Collector();
+	public static final Hopper hopper = new Hopper();
+	public static final Climber climber = new Climber();
+	public static final Shooter shooter = new Shooter();
 	//OI
 	public static final OI OI = new OI();
+	public static final Compressor compressor = new Compressor(RobotMap.PCM_ID);
 	
-	public Robot(){
-		
-	}
+	public Robot(){}
 	@Override
 	public void robotInit(){
-		
+		drive.resetGyro();
+		compressor.setClosedLoopControl(true);
 	}
 	@Override
 	public void autonomousInit(){
