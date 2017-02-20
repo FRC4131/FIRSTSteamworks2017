@@ -1,6 +1,11 @@
 package org.usfirst.frc.team4131.robot;
 
-import org.usfirst.frc.team4131.robot.subsystems.*;
+import org.usfirst.frc.team4131.robot.commands.Auton;
+import org.usfirst.frc.team4131.robot.subsystems.Climber;
+import org.usfirst.frc.team4131.robot.subsystems.Collector;
+import org.usfirst.frc.team4131.robot.subsystems.DriveBase;
+import org.usfirst.frc.team4131.robot.subsystems.Hopper;
+import org.usfirst.frc.team4131.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -32,7 +37,7 @@ public class Robot extends IterativeRobot{
 	}
 	@Override
 	public void autonomousInit(){
-		
+		new Auton().start();
 	}
 	@Override
 	public void autonomousPeriodic(){
