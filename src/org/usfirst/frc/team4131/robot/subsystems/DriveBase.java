@@ -25,13 +25,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @since 2/17/2017
  */
 public class DriveBase extends Subsystem {
-	private CANTalon leftMotor, rightMotor;
+	CANTalon[] left = new CANTalon[3];
+	CANTalon[] right = new CANTalon[3];
 	private DoubleSolenoid leftShifter, rightShifter;
 	private Encoder leftEncoder, rightEncoder;
 	private AHRS imu;
 	public DriveBase(){
-		leftMotor = new CANTalon(RobotMap.DRIVE_LEFT);
-		rightMotor = new CANTalon(RobotMap.DRIVE_RIGHT);
+		for(int i=0; i<3; i++){
+			left[i] = new CANTalon(RobotMap.left[i]);
+			right[i] = new CANTalon(RobotMap.right[i]);
+		}
 		leftShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.LEFT_SHIFTER1, RobotMap.LEFT_SHIFTER2);
 		rightShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.RIGHT_SHIFTER1, RobotMap.RIGHT_SHIFTER2);
 		
