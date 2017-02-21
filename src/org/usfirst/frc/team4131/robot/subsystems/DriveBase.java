@@ -30,8 +30,6 @@ public class DriveBase extends Subsystem {
 	private Encoder leftEncoder, rightEncoder;
 	private AHRS imu;
 	public DriveBase(){
-		leftMotor = new CANTalon(RobotMap.DRIVE_LEFT);
-		rightMotor = new CANTalon(RobotMap.DRIVE_RIGHT);
 		leftShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.LEFT_SHIFTER1, RobotMap.LEFT_SHIFTER2);
 		rightShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.RIGHT_SHIFTER1, RobotMap.RIGHT_SHIFTER2);
 		
