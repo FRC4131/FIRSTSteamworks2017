@@ -55,7 +55,7 @@ public class DriveBase extends Subsystem {
 		setDefaultCommand(new Move());
 	}
 	public void move(double left, double right) {
-		leftMotors[0].set(left);
+		leftMotors[0].set(-left);
 		rightMotors[0].set(right);
 	}
 	public void shiftUp(){
