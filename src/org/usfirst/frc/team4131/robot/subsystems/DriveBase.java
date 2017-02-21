@@ -25,11 +25,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @since 2/17/2017
  */
 public class DriveBase extends Subsystem {
-	private CANTalon leftMotor, rightMotor;
+	CANTalon[] left = new CANTalon[3];
+	CANTalon[] right = new CANTalon[3];
 	private DoubleSolenoid leftShifter, rightShifter;
 	private Encoder leftEncoder, rightEncoder;
 	private AHRS imu;
 	public DriveBase(){
+		for(int i=0; i<3; i++){
+			left[i] = new CANTalon(RobotMap.left[i]);
+			right[i] = new CANTalon(RobotMap.right[i]);
+		}
 		leftShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.LEFT_SHIFTER1, RobotMap.LEFT_SHIFTER2);
 		rightShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.RIGHT_SHIFTER1, RobotMap.RIGHT_SHIFTER2);
 		
@@ -44,8 +49,8 @@ public class DriveBase extends Subsystem {
 		setDefaultCommand(new Move());
 	}
 	public void move(double left, double right) {
-		leftMotors[0].set(left);
-		rightMotors[0].set(right);
+		leftMotor.set(-left);
+		rightMotor.set(right);
 	}
 	public void shiftUp(){
 		leftShifter.set(DoubleSolenoid.Value.kForward);
