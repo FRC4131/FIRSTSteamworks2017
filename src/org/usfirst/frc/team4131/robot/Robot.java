@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot{
 	}
 	@Override
 	public void autonomousInit(){
-		new Auton().start();
+		
 	}
 	@Override
 	public void autonomousPeriodic(){
