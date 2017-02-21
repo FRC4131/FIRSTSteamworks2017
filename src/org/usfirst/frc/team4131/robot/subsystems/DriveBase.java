@@ -49,8 +49,13 @@ public class DriveBase extends Subsystem {
 		setDefaultCommand(new Move());
 	}
 	public void move(double left, double right) {
+<<<<<<< HEAD
 		leftMotor.set(-left);
 		rightMotor.set(right);
+=======
+		leftMotors[0].set(left);
+		rightMotors[0].set(right);
+>>>>>>> parent of 6604367... Motor ID's and drive inversion
 	}
 	public void shiftUp(){
 		leftShifter.set(DoubleSolenoid.Value.kForward);
