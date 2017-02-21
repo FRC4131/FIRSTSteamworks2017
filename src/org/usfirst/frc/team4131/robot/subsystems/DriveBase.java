@@ -4,7 +4,6 @@ import org.usfirst.frc.team4131.robot.RobotMap;
 import org.usfirst.frc.team4131.robot.commands.Move;
 
 import com.ctre.CANTalon;
-import com.ctre.CANTalon.TalonControlMode;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -35,6 +34,7 @@ public class DriveBase extends Subsystem {
 		rightMotor = new CANTalon(RobotMap.DRIVE_RIGHT);
 		leftShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.LEFT_SHIFTER1, RobotMap.LEFT_SHIFTER2);
 		rightShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.RIGHT_SHIFTER1, RobotMap.RIGHT_SHIFTER2);
+		
 		leftEncoder = new Encoder(RobotMap.ENCODER_LEFT1, RobotMap.ENCODER_LEFT2);
 		rightEncoder = new Encoder(RobotMap.ENCODER_RIGHT1, RobotMap.ENCODER_RIGHT2);
 		leftEncoder.setDistancePerPulse(RobotMap.DRIVE_INCHES_PER_PULSE);
@@ -46,7 +46,7 @@ public class DriveBase extends Subsystem {
 		setDefaultCommand(new Move());
 	}
 	public void move(double left, double right) {
-		leftMotor.set(-left);
+		leftMotor.set(left);
 		rightMotor.set(right);
 	}
 	public void shiftUp(){
