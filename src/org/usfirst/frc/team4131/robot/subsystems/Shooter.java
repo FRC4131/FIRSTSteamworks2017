@@ -3,6 +3,7 @@ package org.usfirst.frc.team4131.robot.subsystems;
 import org.usfirst.frc.team4131.robot.RobotMap;
 
 import com.ctre.CANTalon;
+import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -19,7 +20,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Shooter extends Subsystem{
 	private CANTalon flywheelMotor = new CANTalon(RobotMap.FLYWHEEL_MOTOR);
 	protected void initDefaultCommand(){}
-	public Shooter(){}
+	public Shooter(){
+		flywheelMotor.changeControlMode(TalonControlMode.Position);
+		flywheelMotor.setPID(0.1, 0, 0);
+		flywheelMotor.setCloseLoopRampRate(0);
+		flywheelMotor.setIZone(100);
+	}
 	public void runFlywheel(){
 		flywheelMotor.set(1);
 	}
