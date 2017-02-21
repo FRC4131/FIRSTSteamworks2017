@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * ========== Test Procedure ==========
- * Run on Robot in a Box
- * We will call {@link #collect()} in teleop, and expect the motor to spin at full speed.
+ * Run on Competition Bot
+ * We will call {@link #collect()} in teleop, and expect the collector to intake fuel on contact.
+ * We will call {@link #eject()} in teleop, and expect the collector to eject all fuel within it.
  * Tests passed
  * ====================================
- * 
  * @author Patrick
  * @since 1/28/2017
  * 
