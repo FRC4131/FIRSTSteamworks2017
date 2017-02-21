@@ -26,22 +26,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @since 2/17/2017
  */
 public class DriveBase extends Subsystem {
-	CANTalon[] leftMotors = new CANTalon[3];
-	CANTalon[] rightMotors = new CANTalon[3];
+	private CANTalon leftMotor, rightMotor;
 	private DoubleSolenoid leftShifter, rightShifter;
 	private Encoder leftEncoder, rightEncoder;
 	private AHRS imu;
 	public DriveBase(){
-		for(int i=0; i<3; i++){
-			leftMotors[i] = new CANTalon(RobotMap.left[i]);
-			rightMotors[i] = new CANTalon(RobotMap.right[i]);
-		}
-		for(int i=1; i<3; i++){
-			leftMotors[i].changeControlMode(TalonControlMode.Follower);
-			leftMotors[i].set(RobotMap.left[0]);
-			rightMotors[i].changeControlMode(TalonControlMode.Follower);
-			rightMotors[i].set(RobotMap.right[0]);
-		}
+		leftMotor = new CANTalon(RobotMap.DRIVE_LEFT);
+		rightMotor = new CANTalon(RobotMap.DRIVE_RIGHT);
 		leftShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.LEFT_SHIFTER1, RobotMap.LEFT_SHIFTER2);
 		rightShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.RIGHT_SHIFTER1, RobotMap.RIGHT_SHIFTER2);
 		leftEncoder = new Encoder(RobotMap.ENCODER_LEFT1, RobotMap.ENCODER_LEFT2);
@@ -55,8 +46,8 @@ public class DriveBase extends Subsystem {
 		setDefaultCommand(new Move());
 	}
 	public void move(double left, double right) {
-		leftMotors[0].set(-left);
-		rightMotors[0].set(right);
+		leftMotor.set(-left);
+		rightMotor.set(right);
 	}
 	public void shiftUp(){
 		leftShifter.set(DoubleSolenoid.Value.kForward);

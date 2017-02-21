@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4131.robot;
 
-import org.usfirst.frc.team4131.robot.commands.Auton;
 import org.usfirst.frc.team4131.robot.subsystems.Climber;
 import org.usfirst.frc.team4131.robot.subsystems.Collector;
 import org.usfirst.frc.team4131.robot.subsystems.DriveBase;
