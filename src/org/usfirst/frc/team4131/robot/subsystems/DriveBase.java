@@ -32,21 +32,17 @@ public class DriveBase extends Subsystem {
 	private Encoder leftEncoder, rightEncoder;
 	private AHRS imu;
 	public DriveBase(){
-		leftMotors[0] = new CANTalon(RobotMap.LEFT[0]);
-		leftMotors[1] = new CANTalon(RobotMap.LEFT[1]);
-		leftMotors[2] = new CANTalon(RobotMap.LEFT[2]);
-		rightMotors[0] = new CANTalon(RobotMap.RIGHT[0]);
-		rightMotors[1] = new CANTalon(RobotMap.RIGHT[1]);
-		rightMotors[2] = new CANTalon(RobotMap.RIGHT[2]);
 		
-		leftMotors[1].changeControlMode(TalonControlMode.Follower);
-		leftMotors[2].changeControlMode(TalonControlMode.Follower);
-		leftMotors[1].set(leftMotors[0].getDeviceID());
-		leftMotors[2].set(leftMotors[0].getDeviceID());
-		rightMotors[1].changeControlMode(TalonControlMode.Follower);
-		rightMotors[2].changeControlMode(TalonControlMode.Follower);
-		rightMotors[1].set(rightMotors[0].getDeviceID());
-		rightMotors[2].set(rightMotors[0].getDeviceID());
+		for(int i=0; i<3; i++) {
+			leftMotors[i] = new CANTalon(RobotMap.LEFT[i]);
+			rightMotors[i] = new CANTalon(RobotMap.RIGHT[i]);
+		}
+		for(int i=1; i<3; i++) {
+			leftMotors[i].changeControlMode(TalonControlMode.Follower);
+			leftMotors[i].set(leftMotors[0].getDeviceID());
+			rightMotors[i].changeControlMode(TalonControlMode.Follower);
+			rightMotors[i].set(rightMotors[0].getDeviceID());
+		}
 		
 		leftShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.LEFT_SHIFTER1, RobotMap.LEFT_SHIFTER2);
 		rightShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.RIGHT_SHIFTER1, RobotMap.RIGHT_SHIFTER2);
