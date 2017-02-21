@@ -34,5 +34,5 @@ public class RobotMap {
 	//Constants
 	public static final int DRIVE_INCHES_PER_PULSE = 1;
 	public static final double DRIVE_RAMP_RATE = 12 / 1.5;//Volts per second; full power (12V) divided by time from zero to full
-	public static final boolean DRIVE_LEFT_INVERTED = false, DRIVE_RIGHT_INVERTED = true;
+	public static final boolean DRIVE_LEFT_INVERTED = true, DRIVE_RIGHT_INVERTED = false;
 }
