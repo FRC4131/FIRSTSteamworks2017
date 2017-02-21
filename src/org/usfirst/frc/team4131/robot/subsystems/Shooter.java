@@ -21,7 +21,7 @@ public class Shooter extends Subsystem{
 	protected void initDefaultCommand(){}
 	public Shooter(){}
 	public void runFlywheel(){
-		flywheelMotor.set(1);
+		flywheelMotor.set(-1);
 	}
 	public void stopFlywheel(){
 		flywheelMotor.set(0);
