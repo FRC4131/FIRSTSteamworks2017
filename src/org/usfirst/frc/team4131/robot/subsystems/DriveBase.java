@@ -4,6 +4,7 @@ import org.usfirst.frc.team4131.robot.RobotMap;
 import org.usfirst.frc.team4131.robot.commands.Move;
 
 import com.ctre.CANTalon;
+import com.ctre.CANTalon.TalonControlMode;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -25,13 +26,26 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @since 2/17/2017
  */
 public class DriveBase extends Subsystem {
-	private CANTalon leftMotor, rightMotor;
+	private CANTalon[] leftMotors;
+	private CANTalon[] rightMotors;
 	private DoubleSolenoid leftShifter, rightShifter;
 	private Encoder leftEncoder, rightEncoder;
 	private AHRS imu;
 	public DriveBase(){
-		leftMotor = new CANTalon(RobotMap.DRIVE_LEFT);
-		rightMotor = new CANTalon(RobotMap.DRIVE_RIGHT);
+		leftMotors[0] = new CANTalon(RobotMap.LEFT[0]);
+		leftMotors[1] = new CANTalon(RobotMap.LEFT[1]);
+		leftMotors[2] = new CANTalon(RobotMap.LEFT[2]);
+		rightMotors[0] = new CANTalon(RobotMap.RIGHT[0]);
+		rightMotors[1] = new CANTalon(RobotMap.RIGHT[1]);
+		rightMotors[2] = new CANTalon(RobotMap.RIGHT[2]);
+		leftMotors[1].changeControlMode(TalonControlMode.Follower);
+		leftMotors[2].changeControlMode(TalonControlMode.Follower);
+		rightMotors[1].changeControlMode(TalonControlMode.Follower);
+		rightMotors[2].changeControlMode(TalonControlMode.Follower);
+		leftMotors[1].set(leftMotors[0].getDeviceID());
+		leftMotors[2].set(leftMotors[0].getDeviceID());
+		rightMotors[1].set(rightMotors[0].getDeviceID());
+		rightMotors[2].set(rightMotors[0].getDeviceID());
 		leftShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.LEFT_SHIFTER1, RobotMap.LEFT_SHIFTER2);
 		rightShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.RIGHT_SHIFTER1, RobotMap.RIGHT_SHIFTER2);
 		
@@ -46,8 +60,8 @@ public class DriveBase extends Subsystem {
 		setDefaultCommand(new Move());
 	}
 	public void move(double left, double right) {
-		leftMotor.set(left);
-		rightMotor.set(right);
+		leftMotors[0].set(left);
+		rightMotors[0].set(right);
 	}
 	public void shiftUp(){
 		leftShifter.set(DoubleSolenoid.Value.kForward);
