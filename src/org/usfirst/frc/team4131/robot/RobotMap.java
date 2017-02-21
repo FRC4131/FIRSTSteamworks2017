@@ -26,13 +26,12 @@ public class RobotMap {
 	public static final int LEFT_SHIFTER2 = 1;
 	public static final int RIGHT_SHIFTER1 = 2;
 	public static final int RIGHT_SHIFTER2 = 3;
-	public static final int ENCODER_LEFT1 = 0;
-	public static final int ENCODER_LEFT2 = 1;
-	public static final int ENCODER_RIGHT1 = 2;
-	public static final int ENCODER_RIGHT2 = 3;
 	
 	//Constants
-	public static final int DRIVE_INCHES_PER_PULSE = 1;
+	public static final int DRIVE_ENCODER_TICKS = 20;
+	public static final double HIGH_GEAR_RATIO = 0.224, DRIVE_WHEEL_RADIUS = 2;
+	public static final double DRIVE_WHEEL_CIRCUMFERENCE = 2 * Math.PI * DRIVE_WHEEL_RADIUS;
+	public static final double DRIVE_CONVERSION_FACTOR = HIGH_GEAR_RATIO * DRIVE_WHEEL_CIRCUMFERENCE / 80;//The 80 is arbitrary but it works
 	public static final double DRIVE_RAMP_RATE = 12 / 1.5;//Volts per second; full power (12V) divided by time from zero to full
 	public static final boolean DRIVE_LEFT_INVERTED = true, DRIVE_RIGHT_INVERTED = false;
 }
