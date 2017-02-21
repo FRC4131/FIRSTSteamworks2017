@@ -4,6 +4,7 @@ import org.usfirst.frc.team4131.robot.RobotMap;
 import org.usfirst.frc.team4131.robot.commands.Move;
 
 import com.ctre.CANTalon;
+import com.ctre.CANTalon.TalonControlMode;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -25,13 +26,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @since 2/17/2017
  */
 public class DriveBase extends Subsystem {
-	private CANTalon leftMotor, rightMotor;
+	private CANTalon[] leftMotors;
+	private CANTalon[] rightMotors;
 	private DoubleSolenoid leftShifter, rightShifter;
 	private Encoder leftEncoder, rightEncoder;
 	private AHRS imu;
 	public DriveBase(){
-		leftMotor = new CANTalon(RobotMap.DRIVE_LEFT);
-		rightMotor = new CANTalon(RobotMap.DRIVE_RIGHT);
+		
+		for(int i=0; i<3; i++) {
+			leftMotors[i] = new CANTalon(RobotMap.LEFT[i]);
+			rightMotors[i] = new CANTalon(RobotMap.RIGHT[i]);
+		}
+		for(int i=1; i<3; i++) {
+			leftMotors[i].changeControlMode(TalonControlMode.Follower);
+			leftMotors[i].set(leftMotors[0].getDeviceID());
+			rightMotors[i].changeControlMode(TalonControlMode.Follower);
+			rightMotors[i].set(rightMotors[0].getDeviceID());
+		}
+		
 		leftShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.LEFT_SHIFTER1, RobotMap.LEFT_SHIFTER2);
 		rightShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.RIGHT_SHIFTER1, RobotMap.RIGHT_SHIFTER2);
 		
@@ -46,8 +58,8 @@ public class DriveBase extends Subsystem {
 		setDefaultCommand(new Move());
 	}
 	public void move(double left, double right) {
-		leftMotor.set(left);
-		rightMotor.set(right);
+		leftMotors[0].set(left);
+		rightMotors[0].set(right);
 	}
 	public void shiftUp(){
 		leftShifter.set(DoubleSolenoid.Value.kForward);
