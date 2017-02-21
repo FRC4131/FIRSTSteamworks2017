@@ -12,8 +12,7 @@ public class RobotMap {
 	public static final int LEFT_JOYSTICK = 0;
 	public static final int RIGHT_JOYSTICK = 1;
 	//Motors
-	public static final int[] left = {1, 2, 3};
-	public static final int[] right = {4, 5, 6};
+	public static final int DRIVE_LEFT = 1;
 	public static final int DRIVE_RIGHT = 2;
 	public static final int FLYWHEEL_MOTOR = 7;
 	public static final int FEEDER_MOTOR = 8;

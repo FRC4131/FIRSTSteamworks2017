@@ -19,12 +19,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Shooter extends Subsystem{
 	private CANTalon flywheelMotor = new CANTalon(RobotMap.FLYWHEEL_MOTOR);
 	protected void initDefaultCommand(){}
-	public Shooter(){
-		flywheelMotor.changeControlMode(TalonControlMode.Position);
-		flywheelMotor.setPID(0.1, 0, 0);
-		flywheelMotor.setCloseLoopRampRate(0);
-		flywheelMotor.setIZone(100);
-	}
+	public Shooter(){}
 	public void runFlywheel(){
 		flywheelMotor.set(1);
 	}
