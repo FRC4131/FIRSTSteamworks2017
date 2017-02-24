@@ -5,6 +5,7 @@ import org.usfirst.frc.team4131.robot.subsystems.*;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,15 +29,17 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void robotInit(){
 		drive.resetGyro();
+		drive.resetDistance();
 		compressor.setClosedLoopControl(true);
 	}
 	@Override
 	public void autonomousInit(){
-		
+		drive.resetDistance();
 	}
 	@Override
 	public void autonomousPeriodic(){
 		Scheduler.getInstance().run();
+		dashboard();
 	}
 	@Override
 	public void teleopInit(){
@@ -45,6 +48,7 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void teleopPeriodic(){
 		Scheduler.getInstance().run();
+		dashboard();
 	}
 	@Override
 	public void testInit(){
@@ -53,6 +57,7 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void testPeriodic(){
 		Scheduler.getInstance().run();
+		dashboard();
 	}
 	@Override
 	public void disabledInit(){
@@ -60,6 +65,10 @@ public class Robot extends IterativeRobot{
 	}
 	@Override
 	public void disabledPeriodic(){
-		Scheduler.getInstance().run();
+		dashboard();
+	}
+	private void dashboard(){
+		SmartDashboard.putNumber("Angle", drive.getAngle());
+		SmartDashboard.putNumber("Encoder", drive.getDistance());
 	}
 }

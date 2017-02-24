@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * ========== Test Procedure ==========
- * Run on Robot in a Box
- * We will call {@link #engage()} in teleop, and expect the motor to spin at half speed.
- * We will call {@link #climb()} in teleop, and expect the motor to spin at full speed in the same direction as {{@link #engage()}.
+ * Run on Competition Bot
+ * We will call {@link #engage()} with the climber directly under the rope, and expect the climber to engage the rope and begin to climb.
+ * We will call {@link #climb()} in teleop, and expect the robot to climb the rope.
  * Tests passed
  * ====================================
  * @author Ian

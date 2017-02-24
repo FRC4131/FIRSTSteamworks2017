@@ -1,10 +1,9 @@
 package org.usfirst.frc.team4131.robot.commands;
 
 import org.usfirst.frc.team4131.robot.Robot;
-import org.usfirst.frc.team4131.robot.RobotMap;
-
 
 import edu.wpi.first.wpilibj.command.Command;
+
 /**
  * ========== Test Procedure ==========
  * Ran on Robot in a Box
