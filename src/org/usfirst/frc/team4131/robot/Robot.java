@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4131.robot;
 
+import org.usfirst.frc.team4131.robot.commands.DriveFor;
 import org.usfirst.frc.team4131.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.Compressor;
@@ -20,7 +21,7 @@ public class Robot extends IterativeRobot{
 	//Electronic components
 	public static final Compressor compressor = new Compressor(RobotMap.PCM_ID);
 	//Autonomous
-	private Command autonomousCommand = null;
+	private Command autonomousCommand = new DriveFor(2d, 0.8);
 	@Override
 	public void robotInit(){
 		drive.resetGyro();
