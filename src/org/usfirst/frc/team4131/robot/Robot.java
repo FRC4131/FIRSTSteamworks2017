@@ -23,13 +23,13 @@ public class Robot extends IterativeRobot{
 	private Command autonomousCommand = null;
 	@Override
 	public void robotInit(){
-		drive.resetGyro();
+		drive.resetAngle();
 		drive.resetDistance();
 		compressor.setClosedLoopControl(true);
 	}
 	@Override
 	public void autonomousInit(){
-		drive.resetGyro();
+		drive.resetAngle();
 		drive.resetDistance();
 		if(autonomousCommand != null) autonomousCommand.start();
 	}
@@ -66,6 +66,7 @@ public class Robot extends IterativeRobot{
 	}
 	private void dashboard(){
 		SmartDashboard.putNumber("Angle", drive.getAngle());
-		SmartDashboard.putNumber("Encoder", drive.getDistance());
+		SmartDashboard.putBoolean("AngleReady", drive.isAngleReady());
+		SmartDashboard.putNumber("Distance", drive.getDistance());
 	}
 }

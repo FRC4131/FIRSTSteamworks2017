@@ -107,11 +107,14 @@ public class DriveBase extends Subsystem {
 	public PIDSource getDistanceSource(){
 		return new LambdaPIDSource(this::getDistance, this::getVelocity);
 	}
-	public void resetGyro(){
+	public void resetAngle(){
 		imuOffset = imu.getYaw();
 	}
 	public double getAngle(){
-		return imu.getYaw() - imuOffset;
+		return -(imu.getYaw() - imuOffset);
+	}
+	public boolean isAngleReady(){
+		return imu.isConnected() && !imu.isCalibrating();
 	}
 	public double getAngularVelocity(){
 		return imu.getRate();
