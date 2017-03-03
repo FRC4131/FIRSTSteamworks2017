@@ -22,10 +22,8 @@ public class RobotMap {
 	public static final int CLIMBER_MOTOR = 8;
 	
 	//Digital IO
-	public static final int LEFT_SHIFTER1 = 0;
-	public static final int LEFT_SHIFTER2 = 1;
-	public static final int RIGHT_SHIFTER1 = 2;
-	public static final int RIGHT_SHIFTER2 = 3;
+	public static final int SHIFTER1 = 0;
+	public static final int SHIFTER2 = 1;
 	
 	//Constants
 	public static final int DRIVE_ENCODER_TICKS = 20;
