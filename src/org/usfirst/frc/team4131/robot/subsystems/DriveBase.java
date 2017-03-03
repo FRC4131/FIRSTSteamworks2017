@@ -111,7 +111,7 @@ public class DriveBase extends Subsystem {
 		imuOffset = imu.getYaw();
 	}
 	public double getAngle(){
-		return imu.getYaw() - imuOffset;
+		return -(imu.getYaw() - imuOffset);
 	}
 	public double getAngularVelocity(){
 		return imu.getRate();

@@ -14,26 +14,21 @@ public class DriveFor extends Command{
 		this.time = time;
 		this.speed = speed;
 	}
-	@Override
 	protected void initialize(){
-		Robot.drive.resetDistance();
 		timer.reset();
 		timer.start();
 	}
-	@Override
 	protected void execute(){
+		Robot.drive.shiftUp();
 		Robot.drive.move(speed, speed);
 	}
-	@Override
 	protected boolean isFinished(){
 		return timer.hasPeriodPassed(time);
 	}
-	@Override
 	protected void end(){
 		Robot.drive.move(0, 0);
 		timer.stop();
 	}
-	@Override
 	protected void interrupted(){
 		Robot.drive.move(0, 0);
 		timer.stop();

@@ -29,7 +29,8 @@ public class RobotMap {
 	public static final int DRIVE_ENCODER_TICKS = 20;
 	public static final double HIGH_GEAR_RATIO = 0.224, DRIVE_WHEEL_RADIUS = 2;
 	public static final double DRIVE_WHEEL_CIRCUMFERENCE = 2 * Math.PI * DRIVE_WHEEL_RADIUS;
-	public static final double DRIVE_CONVERSION_FACTOR = HIGH_GEAR_RATIO * DRIVE_WHEEL_CIRCUMFERENCE / 80;//The 80 is arbitrary but it works
+	public static final double MAGIC_DRIVE_CONSTANT = 1d/240 * 59/48 * 51/48;//Arbitrary but it works
+	public static final double DRIVE_CONVERSION_FACTOR = HIGH_GEAR_RATIO * DRIVE_WHEEL_CIRCUMFERENCE * MAGIC_DRIVE_CONSTANT;
 	public static final double DRIVE_RAMP_RATE = 12 / 1.5;//Volts per second; full power (12V) divided by time from zero to full
 	public static final boolean DRIVE_LEFT_INVERTED = true, DRIVE_RIGHT_INVERTED = false;
 }
