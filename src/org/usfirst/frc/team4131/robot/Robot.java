@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4131.robot;
 
-import org.usfirst.frc.team4131.robot.commands.DriveFor;
+import org.usfirst.frc.team4131.robot.commands.DriveStraight;
 import org.usfirst.frc.team4131.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.Compressor;
@@ -21,7 +21,7 @@ public class Robot extends IterativeRobot{
 	//Electronic components
 	public static final Compressor compressor = new Compressor(RobotMap.PCM_ID);
 	//Autonomous
-	private Command autonomousCommand = new DriveFor(2d, 0.8);
+	private Command autonomousCommand = new DriveStraight(48, 0, 0.7);
 	@Override
 	public void robotInit(){
 		drive.resetAngle();
