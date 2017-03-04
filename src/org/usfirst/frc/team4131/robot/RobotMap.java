@@ -21,8 +21,10 @@ public class RobotMap {
 	public static final int LEFT_FEEDER_MOTOR = 9;
 	public static final int RIGHT_FEEDER_MOTOR = 10;
 	public static final int HOPPER_MOTOR = 12;
-	public static final int COLLECTOR_MOTOR = 11;
-	public static final int CLIMBER_MOTOR = 13;
+	public static final int COLLECTOR_MOTOR1 = 11;
+	public static final int COLLECTOR_MOTOR2 = 15;
+	public static final int CLIMBER_MOTOR1 = 13;
+	public static final int CLIMBER_MOTOR2 = 14;
 	
 	//Digital IO
 	public static final int SHIFTER1 = 0;
@@ -35,7 +37,7 @@ public class RobotMap {
 	public static final double MAGIC_DRIVE_CONSTANT = 1d/240 * 59/48 * 51/48;//Arbitrary but it works
 	public static final double DRIVE_CONVERSION_FACTOR = HIGH_GEAR_RATIO * DRIVE_WHEEL_CIRCUMFERENCE * MAGIC_DRIVE_CONSTANT;
 	public static final double DRIVE_RAMP_RATE = 12 / 1.5;//Volts per second; full power (12V) divided by time from zero to full
-	public static final boolean DRIVE_LEFT_INVERTED = false, DRIVE_RIGHT_INVERTED = true;
+	public static final boolean DRIVE_LEFT_INVERTED = true, DRIVE_RIGHT_INVERTED = false;
 	public static final boolean LEFT_FEEDER_INVERTED = false, RIGHT_FEEDER_INVERTED = true;
 	public static final boolean LEFT_SHOOTER_INVERTED = false, RIGHT_SHOOTER_INVERTED = true;
 }
