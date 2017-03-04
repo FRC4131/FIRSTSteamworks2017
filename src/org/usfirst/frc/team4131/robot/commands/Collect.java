@@ -16,20 +16,17 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Collect extends Command {
 	public Collect(){
 		requires(Robot.collector);
-		requires(Robot.hopper);
 	}
 	@Override
 	protected void initialize() {
 	}
 	protected void execute() {
-		Robot.collector.collect();	
-		Robot.hopper.agitateFuel();
+		Robot.collector.collect();
 	}
 	protected boolean isFinished() {	
 		return false;
 	}
 	protected void end() {
 		Robot.collector.stop();
-		Robot.hopper.settleFuel();
 	}
 }
