@@ -16,8 +16,10 @@ public class RobotMap {
 	//Motors
 	public static final int DRIVE_LEFT[] = {1, 2, 3};
 	public static final int DRIVE_RIGHT[] = {4, 5, 6};
-	public static final int FLYWHEEL_MOTOR = 7;
-	public static final int FEEDER_MOTOR = 9;
+	public static final int LEFT_FLYWHEEL_MOTOR = 7;
+	public static final int RIGHT_FLYWHEEL_MOTOR = 8;
+	public static final int LEFT_FEEDER_MOTOR = 9;
+	public static final int RIGHT_FEEDER_MOTOR = 10;
 	public static final int HOPPER_MOTOR = 12;
 	public static final int COLLECTOR_MOTOR = 11;
 	public static final int CLIMBER_MOTOR = 13;
@@ -34,4 +36,6 @@ public class RobotMap {
 	public static final double DRIVE_CONVERSION_FACTOR = HIGH_GEAR_RATIO * DRIVE_WHEEL_CIRCUMFERENCE * MAGIC_DRIVE_CONSTANT;
 	public static final double DRIVE_RAMP_RATE = 12 / 1.5;//Volts per second; full power (12V) divided by time from zero to full
 	public static final boolean DRIVE_LEFT_INVERTED = false, DRIVE_RIGHT_INVERTED = true;
+	public static final boolean LEFT_FEEDER_INVERTED = false, RIGHT_FEEDER_INVERTED = true;
+	public static final boolean LEFT_SHOOTER_INVERTED = false, RIGHT_SHOOTER_INVERTED = true;
 }
