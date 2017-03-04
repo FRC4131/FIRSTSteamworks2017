@@ -36,4 +36,7 @@ public class Climber extends Subsystem{
 	public void stop(){
 		motor.set(0);
 	}
+	public void reverse(){
+		motor.set(-0.7);
+	}
 }
