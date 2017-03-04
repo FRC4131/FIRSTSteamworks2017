@@ -35,6 +35,9 @@ public class Hopper extends Subsystem{
 	public void settleFuel(){
 		hopperMotor.set(0);
 	}
+	public void ejectFuel(){
+		hopperMotor.set(-1);
+	}
 	public void feedShooter(){
 		leftFeeder.set(1);
 		rightFeeder.set(1);

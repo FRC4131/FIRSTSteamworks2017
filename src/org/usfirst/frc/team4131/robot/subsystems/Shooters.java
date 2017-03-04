@@ -4,6 +4,7 @@ import org.usfirst.frc.team4131.robot.RobotMap;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
+import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -22,11 +23,13 @@ public class Shooters extends Subsystem{
 		leftFlywheel.setInverted(RobotMap.LEFT_SHOOTER_INVERTED);
 		leftFlywheel.reverseOutput(RobotMap.LEFT_SHOOTER_INVERTED);
 		leftFlywheel.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		leftFlywheel.changeControlMode(TalonControlMode.PercentVbus);
 		leftFlywheel.setEncPosition(0);
 		
 		rightFlywheel.setInverted(RobotMap.RIGHT_SHOOTER_INVERTED);
 		rightFlywheel.reverseOutput(RobotMap.RIGHT_SHOOTER_INVERTED);
 		rightFlywheel.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		rightFlywheel.changeControlMode(TalonControlMode.PercentVbus);
 		rightFlywheel.setEncPosition(0);
 	}
 	protected void initDefaultCommand(){}
