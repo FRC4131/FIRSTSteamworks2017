@@ -17,8 +17,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Hopper extends Subsystem{
 	private CANTalon hopperMotor = new CANTalon(RobotMap.HOPPER_MOTOR);
-	private CANTalon feederMotor = new CANTalon(RobotMap.FEEDER_MOTOR);
-	public Hopper(){}
+	private CANTalon leftFeeder = new CANTalon(RobotMap.LEFT_FEEDER_MOTOR);
+	private CANTalon rightFeeder = new CANTalon(RobotMap.RIGHT_FEEDER_MOTOR);
+	public Hopper(){
+		leftFeeder.setInverted(RobotMap.LEFT_FEEDER_INVERTED);
+		leftFeeder.reverseOutput(RobotMap.LEFT_FEEDER_INVERTED);
+		
+		rightFeeder.setInverted(RobotMap.RIGHT_FEEDER_INVERTED);
+		rightFeeder.reverseOutput(RobotMap.RIGHT_FEEDER_INVERTED);
+	}
 	protected void initDefaultCommand(){
 		
 	}
@@ -29,9 +36,11 @@ public class Hopper extends Subsystem{
 		hopperMotor.set(0);
 	}
 	public void feedShooter(){
-		feederMotor.set(1);
+		leftFeeder.set(1);
+		rightFeeder.set(1);
 	}
 	public void stopFeeder(){
-		feederMotor.set(0);
+		leftFeeder.set(0);
+		rightFeeder.set(0);
 	}
 }

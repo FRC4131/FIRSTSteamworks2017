@@ -15,7 +15,7 @@ public class Robot extends IterativeRobot{
 	public static final Collector collector = new Collector();
 	public static final Hopper hopper = new Hopper();
 	public static final Climber climber = new Climber();
-	public static final Shooter shooter = new Shooter();
+	public static final Shooters shooters = new Shooters();
 	//OI
 	public static final OI OI = new OI();
 	//Electronic components
@@ -24,13 +24,13 @@ public class Robot extends IterativeRobot{
 	private Command autonomousCommand = new DriveFor(2d, 0.8);
 	@Override
 	public void robotInit(){
-		drive.resetGyro();
+		drive.resetAngle();
 		drive.resetDistance();
 		compressor.setClosedLoopControl(true);
 	}
 	@Override
 	public void autonomousInit(){
-		drive.resetGyro();
+		drive.resetAngle();
 		drive.resetDistance();
 		if(autonomousCommand != null) autonomousCommand.start();
 	}
@@ -67,6 +67,7 @@ public class Robot extends IterativeRobot{
 	}
 	private void dashboard(){
 		SmartDashboard.putNumber("Angle", drive.getAngle());
-		SmartDashboard.putNumber("Encoder", drive.getDistance());
+		SmartDashboard.putBoolean("AngleReady", drive.isAngleReady());
+		SmartDashboard.putNumber("Distance", drive.getDistance());
 	}
 }

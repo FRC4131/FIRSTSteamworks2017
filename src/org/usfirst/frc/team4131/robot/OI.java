@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI{
 	private Joystick leftStick;
 	private Joystick rightStick;
+	private Joystick auxilliary;
 	private JoystickButton collect;
 	private JoystickButton spitOut;
 	private JoystickButton chargeShooter;
@@ -34,12 +35,14 @@ public class OI{
 	public OI(){
 		leftStick = new Joystick(RobotMap.LEFT_JOYSTICK);
 		rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);
-		collect = new JoystickButton(leftStick, 4);
-		spitOut = new JoystickButton(rightStick, 3);
+		auxilliary = new Joystick(RobotMap.AUXILLIARY_CONTROLLER);
+		collect = new JoystickButton(auxilliary, 5);
+		spitOut = new JoystickButton(auxilliary, 3);
+		
 		chargeShooter = new JoystickButton(leftStick, 1);
 		shoot = new JoystickButton(rightStick, 1);
-		climb = new JoystickButton(leftStick, 7);
-		slowClimb = new JoystickButton(leftStick, 8);
+		climb = new JoystickButton(auxilliary, 6);
+		slowClimb = new JoystickButton(auxilliary, 4);
 		killShooter = new JoystickButton(rightStick, 2);
 		shift = new JoystickButton(rightStick, 6);
 		
