@@ -31,8 +31,8 @@ public class Shooters extends Subsystem{
 	}
 	protected void initDefaultCommand(){}
 	public void run(){
-		leftFlywheel.set(1);
-		rightFlywheel.set(1);
+		leftFlywheel.set(0.7);
+		rightFlywheel.set(0.535);
 	}
 	public void stop(){
 		leftFlywheel.set(0);
