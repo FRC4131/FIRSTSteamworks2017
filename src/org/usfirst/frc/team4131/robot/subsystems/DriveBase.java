@@ -36,7 +36,7 @@ public class DriveBase extends Subsystem {
 		leftMotor = new CANTalon(RobotMap.DRIVE_LEFT[0]);
 		leftMotor.setInverted(RobotMap.DRIVE_LEFT_INVERTED);
 		leftMotor.reverseOutput(RobotMap.DRIVE_LEFT_INVERTED);
-		leftMotor.setVoltageRampRate(RobotMap.DRIVE_RAMP_RATE);
+//		leftMotor.setVoltageRampRate(RobotMap.DRIVE_RAMP_RATE);
 		leftMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		leftMotor.reverseSensor(RobotMap.DRIVE_LEFT_INVERTED);
 		leftMotor.configEncoderCodesPerRev(RobotMap.DRIVE_ENCODER_TICKS);
@@ -45,7 +45,7 @@ public class DriveBase extends Subsystem {
 		rightMotor = new CANTalon(RobotMap.DRIVE_RIGHT[0]);
 		rightMotor.setInverted(RobotMap.DRIVE_RIGHT_INVERTED);
 		rightMotor.reverseOutput(RobotMap.DRIVE_RIGHT_INVERTED);
-		rightMotor.setVoltageRampRate(RobotMap.DRIVE_RAMP_RATE);
+//		rightMotor.setVoltageRampRate(RobotMap.DRIVE_RAMP_RATE);
 		rightMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		rightMotor.reverseSensor(RobotMap.DRIVE_RIGHT_INVERTED);
 		rightMotor.configEncoderCodesPerRev(RobotMap.DRIVE_ENCODER_TICKS);
