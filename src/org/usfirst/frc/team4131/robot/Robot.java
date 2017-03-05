@@ -68,5 +68,6 @@ public class Robot extends IterativeRobot{
 		SmartDashboard.putNumber("Angle", drive.getAngle());
 		SmartDashboard.putBoolean("AngleReady", drive.isAngleReady());
 		SmartDashboard.putNumber("Distance", drive.getDistance());
+		SmartDashboard.putNumber("ShooterAdjust", OI.getShooterAdjustment());
 	}
 }
