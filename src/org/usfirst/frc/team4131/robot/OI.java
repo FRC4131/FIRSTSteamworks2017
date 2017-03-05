@@ -57,6 +57,9 @@ public class OI{
 	public boolean shiftDown(){
 		return shift.get();
 	}
+	public double getShooterAdjustment(){
+		return (-constrain(leftStick.getRawAxis(3)) + 1)/2d;//0 is bottom, 1 is top
+	}
 	private double constrain(double value){
 		return Math.max(-1, Math.min(1, value));
 	}

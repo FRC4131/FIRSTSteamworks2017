@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4131.robot.subsystems;
 
+import org.usfirst.frc.team4131.robot.Robot;
 import org.usfirst.frc.team4131.robot.RobotMap;
 
 import com.ctre.CANTalon;
@@ -17,6 +18,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @since 1/28/2017
  */
 public class Shooters extends Subsystem{
+	private static final double LEFT_SPEED = 0.535, RIGHT_SPEED = 0.7,
+			LEFT_ADJUSTMENT = 1 - LEFT_SPEED, RIGHT_ADJUSTMENT = 1 - RIGHT_SPEED;
 	private CANTalon leftFlywheel = new CANTalon(RobotMap.LEFT_FLYWHEEL_MOTOR),
 			rightFlywheel = new CANTalon(RobotMap.RIGHT_FLYWHEEL_MOTOR);
 	public Shooters(){
@@ -34,8 +37,8 @@ public class Shooters extends Subsystem{
 	}
 	protected void initDefaultCommand(){}
 	public void run(){
-		leftFlywheel.set(0.535);
-		rightFlywheel.set(0.7);
+		leftFlywheel.set(LEFT_SPEED + LEFT_ADJUSTMENT * Robot.OI.getShooterAdjustment());
+		rightFlywheel.set(RIGHT_SPEED + RIGHT_ADJUSTMENT * Robot.OI.getShooterAdjustment());
 //		leftFlywheel.set(1);
 //		rightFlywheel.set(1);
 	}
