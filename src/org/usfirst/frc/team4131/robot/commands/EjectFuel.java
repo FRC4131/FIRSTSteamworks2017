@@ -19,9 +19,11 @@ public class EjectFuel extends Command{
 	@Override
 	protected void end(){
 		Robot.hopper.settleFuel();
+		Robot.hopper.stopFeeder();
 	}
 	@Override
 	protected void initialize(){
 		Robot.hopper.settleFuel();
+		Robot.hopper.stopFeeder();
 	}
 }
