@@ -21,7 +21,7 @@ public class Collect extends Command {
 	protected void initialize() {
 	}
 	protected void execute() {
-		Robot.collector.collect();	
+		Robot.collector.collect();
 	}
 	protected boolean isFinished() {	
 		return false;

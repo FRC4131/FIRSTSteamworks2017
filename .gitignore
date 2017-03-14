@@ -8,3 +8,6 @@
 /build/
 /dist/
 /sysProps.xml
+
+#Miscellanious
+/misc/

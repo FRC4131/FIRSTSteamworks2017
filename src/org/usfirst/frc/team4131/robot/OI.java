@@ -21,36 +21,31 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 
 public class OI{
-	private Joystick leftStick;
-	private Joystick rightStick;
-	private JoystickButton collect;
-	private JoystickButton spitOut;
-	private JoystickButton chargeShooter;
-	private JoystickButton shoot;
-	private JoystickButton climb;
-	private JoystickButton slowClimb;
-	private JoystickButton killShooter;
-	private JoystickButton shift;
+	private Joystick leftStick = new Joystick(RobotMap.LEFT_JOYSTICK);
+	private Joystick rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);
+	private Joystick auxilliary = new Joystick(RobotMap.AUXILLIARY_CONTROLLER);
+	
+	private JoystickButton collect = new JoystickButton(auxilliary, 5);
+	private JoystickButton spitOut = new JoystickButton(auxilliary, 3);
+	private JoystickButton ejectFuel = new JoystickButton(auxilliary, 11);
+	private JoystickButton chargeShooter = new JoystickButton(leftStick, 1);
+	private JoystickButton shoot = new JoystickButton(rightStick, 1);
+	private JoystickButton climb = new JoystickButton(auxilliary, 6);
+	private JoystickButton slowClimb = new JoystickButton(auxilliary, 4);
+	private JoystickButton ejectRope = new JoystickButton(auxilliary, 12);
+	private JoystickButton killShooter = new JoystickButton(rightStick, 2);
+	private JoystickButton shift = new JoystickButton(rightStick, 4);
 	public OI(){
-		leftStick = new Joystick(RobotMap.LEFT_JOYSTICK);
-		rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);
-		collect = new JoystickButton(leftStick, 4);
-		spitOut = new JoystickButton(rightStick, 3);
-		chargeShooter = new JoystickButton(leftStick, 1);
-		shoot = new JoystickButton(rightStick, 1);
-		climb = new JoystickButton(leftStick, 7);
-		slowClimb = new JoystickButton(leftStick, 8);
-		killShooter = new JoystickButton(rightStick, 2);
-		shift = new JoystickButton(rightStick, 6);
-		
 		ChargeShooter chargeShooterCommand = new ChargeShooter();
 		
 		collect.whileHeld(new Collect());
 		spitOut.whileHeld(new SpitOut());
+		ejectFuel.whileHeld(new EjectFuel());
 		chargeShooter.whenPressed(chargeShooterCommand);
 		shoot.whileHeld(new Shoot());
 		climb.whileHeld(new Climb());
 		slowClimb.whileHeld(new EngageClimber());
+		ejectRope.whileHeld(new EjectRope());
 		killShooter.cancelWhenPressed(chargeShooterCommand);
 	}
 	public double getLeftSpeed(){
@@ -61,6 +56,9 @@ public class OI{
 	}
 	public boolean shiftDown(){
 		return shift.get();
+	}
+	public double getShooterAdjustment(){
+		return (-constrain(leftStick.getRawAxis(3)) + 1)/2d;//0 is bottom, 1 is top
 	}
 	private double constrain(double value){
 		return Math.max(-1, Math.min(1, value));

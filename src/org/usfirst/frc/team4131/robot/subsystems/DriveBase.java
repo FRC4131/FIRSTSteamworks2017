@@ -2,6 +2,7 @@ package org.usfirst.frc.team4131.robot.subsystems;
 
 import org.usfirst.frc.team4131.robot.RobotMap;
 import org.usfirst.frc.team4131.robot.commands.Move;
+import org.usfirst.frc.team4131.robot.utility.LambdaPIDSource;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
@@ -10,7 +11,6 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PIDSource;
-import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -28,14 +28,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveBase extends Subsystem {
 	private CANTalon leftMotor, rightMotor;
-	private DoubleSolenoid leftShifter, rightShifter;
+	private DoubleSolenoid shifters;
 	private AHRS imu;
+	private float imuOffset = 0;
 	public DriveBase(){
 		//Create left motor
 		leftMotor = new CANTalon(RobotMap.DRIVE_LEFT[0]);
 		leftMotor.setInverted(RobotMap.DRIVE_LEFT_INVERTED);
 		leftMotor.reverseOutput(RobotMap.DRIVE_LEFT_INVERTED);
-		leftMotor.setVoltageRampRate(RobotMap.DRIVE_RAMP_RATE);
 		leftMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		leftMotor.reverseSensor(RobotMap.DRIVE_LEFT_INVERTED);
 		leftMotor.configEncoderCodesPerRev(RobotMap.DRIVE_ENCODER_TICKS);
@@ -44,11 +44,9 @@ public class DriveBase extends Subsystem {
 		rightMotor = new CANTalon(RobotMap.DRIVE_RIGHT[0]);
 		rightMotor.setInverted(RobotMap.DRIVE_RIGHT_INVERTED);
 		rightMotor.reverseOutput(RobotMap.DRIVE_RIGHT_INVERTED);
-		rightMotor.setVoltageRampRate(RobotMap.DRIVE_RAMP_RATE);
 		rightMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		rightMotor.reverseSensor(RobotMap.DRIVE_RIGHT_INVERTED);
 		rightMotor.configEncoderCodesPerRev(RobotMap.DRIVE_ENCODER_TICKS);
-		
 		
 		//Create other motors (as followers)
 		for(int i=1; i<3; ++i){
@@ -61,8 +59,7 @@ public class DriveBase extends Subsystem {
 			right.set(RobotMap.DRIVE_RIGHT[0]);
 		}
 		//Create shifters
-		leftShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.LEFT_SHIFTER1, RobotMap.LEFT_SHIFTER2);
-		rightShifter = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.RIGHT_SHIFTER1, RobotMap.RIGHT_SHIFTER2);
+		shifters = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.SHIFTER1, RobotMap.SHIFTER2);
 		
 		imu = new AHRS(SPI.Port.kMXP);
 	}
@@ -75,12 +72,10 @@ public class DriveBase extends Subsystem {
 		rightMotor.set(right);
 	}
 	public void shiftUp(){
-		leftShifter.set(DoubleSolenoid.Value.kReverse);
-		rightShifter.set(DoubleSolenoid.Value.kReverse);
+		shifters.set(DoubleSolenoid.Value.kReverse);
 	}
 	public void shiftDown(){
-		leftShifter.set(DoubleSolenoid.Value.kForward);
-		rightShifter.set(DoubleSolenoid.Value.kForward);
+		shifters.set(DoubleSolenoid.Value.kForward);
 	}
 	public void resetDistance(){
 		leftMotor.setEncPosition(0);
@@ -108,40 +103,21 @@ public class DriveBase extends Subsystem {
 		return -(left + right) / 2 * RobotMap.DRIVE_CONVERSION_FACTOR;
 	}
 	public PIDSource getDistanceSource(){
-		return new PIDSource(){
-			private PIDSourceType type;
-			public void setPIDSourceType(PIDSourceType pidSource){type = pidSource;}
-			public PIDSourceType getPIDSourceType(){return type;}
-			public double pidGet(){
-				switch(type){
-					case kDisplacement: return getDistance();
-					case kRate: return getVelocity();
-					default: return 0;
-				}
-			}
-		};
+		return new LambdaPIDSource(this::getDistance, this::getVelocity);
 	}
-	public void resetGyro(){
-		imu.reset();
+	public void resetAngle(){
+		imuOffset = imu.getYaw();
 	}
 	public double getAngle(){
-		return imu.getYaw();
+		return -(imu.getYaw() - imuOffset);
+	}
+	public boolean isAngleReady(){
+		return imu.isConnected() && !imu.isCalibrating();
 	}
 	public double getAngularVelocity(){
 		return imu.getRate();
 	}
 	public PIDSource getAngleSource(){
-		return new PIDSource(){
-			private PIDSourceType type;
-			public void setPIDSourceType(PIDSourceType pidSource){type = pidSource;}
-			public PIDSourceType getPIDSourceType(){return type;}
-			public double pidGet(){
-				switch(type){
-					case kDisplacement: return getAngle();
-					case kRate: return getAngularVelocity();
-					default: return 0;
-				}
-			}
-		};
+		return new LambdaPIDSource(this::getAngle, this::getAngularVelocity);
 	}
 }
