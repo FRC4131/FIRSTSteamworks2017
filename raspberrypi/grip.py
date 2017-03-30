@@ -20,9 +20,9 @@ class GripPipeline:
         self.cv_resize_output = None
 
         self.__hsl_threshold_input = self.cv_resize_output
-        self.__hsl_threshold_hue = [32, 80]
+        self.__hsl_threshold_hue = [0.0, 180.0]
         self.__hsl_threshold_saturation = [0.0, 255.0]
-        self.__hsl_threshold_luminance = [40.81920903954802, 255.0]
+        self.__hsl_threshold_luminance = [128.41726618705036, 255.0]
 
         self.hsl_threshold_output = None
 
@@ -31,22 +31,18 @@ class GripPipeline:
 
         self.find_contours_output = None
 
-        self.__convex_hulls_contours = self.find_contours_output
-
-        self.convex_hulls_output = None
-
-        self.__filter_contours_contours = self.convex_hulls_output
-        self.__filter_contours_min_area = 500.0
-        self.__filter_contours_min_perimeter = 0.0
-        self.__filter_contours_min_width = 0.0
-        self.__filter_contours_max_width = 1000.0
-        self.__filter_contours_min_height = 0.0
-        self.__filter_contours_max_height = 1000.0
-        self.__filter_contours_solidity = [0.0, 100]
-        self.__filter_contours_max_vertices = 16.0
-        self.__filter_contours_min_vertices = 4.0
-        self.__filter_contours_min_ratio = 0.1
-        self.__filter_contours_max_ratio = 0.2
+        self.__filter_contours_contours = self.find_contours_output
+        self.__filter_contours_min_area = 10.0
+        self.__filter_contours_min_perimeter = 0
+        self.__filter_contours_min_width = 0
+        self.__filter_contours_max_width = 1000
+        self.__filter_contours_min_height = 0
+        self.__filter_contours_max_height = 1000
+        self.__filter_contours_solidity = [80.03597122302159, 100]
+        self.__filter_contours_max_vertices = 1000000
+        self.__filter_contours_min_vertices = 0.0
+        self.__filter_contours_min_ratio = 0.0
+        self.__filter_contours_max_ratio = 1.0
 
         self.filter_contours_output = None
 
@@ -67,12 +63,8 @@ class GripPipeline:
         self.__find_contours_input = self.hsl_threshold_output
         (self.find_contours_output) = self.__find_contours(self.__find_contours_input, self.__find_contours_external_only)
 
-        # Step Convex_Hulls0:
-        self.__convex_hulls_contours = self.find_contours_output
-        (self.convex_hulls_output) = self.__convex_hulls(self.__convex_hulls_contours)
-
         # Step Filter_Contours0:
-        self.__filter_contours_contours = self.convex_hulls_output
+        self.__filter_contours_contours = self.find_contours_output
         (self.filter_contours_output) = self.__filter_contours(self.__filter_contours_contours, self.__filter_contours_min_area, self.__filter_contours_min_perimeter, self.__filter_contours_min_width, self.__filter_contours_max_width, self.__filter_contours_min_height, self.__filter_contours_max_height, self.__filter_contours_solidity, self.__filter_contours_max_vertices, self.__filter_contours_min_vertices, self.__filter_contours_min_ratio, self.__filter_contours_max_ratio)
 
 
@@ -120,19 +112,6 @@ class GripPipeline:
         method = cv2.CHAIN_APPROX_SIMPLE
         im2, contours, hierarchy =cv2.findContours(input, mode=mode, method=method)
         return contours
-
-    @staticmethod
-    def __convex_hulls(input_contours):
-        """Computes the convex hulls of contours.
-        Args:
-            input_contours: A list of numpy.ndarray that each represent a contour.
-        Returns:
-            A list of numpy.ndarray that each represent a contour.
-        """
-        output = []
-        for contour in input_contours:
-            output.append(cv2.convexHull(contour))
-        return output
 
     @staticmethod
     def __filter_contours(input_contours, min_area, min_perimeter, min_width, max_width,
