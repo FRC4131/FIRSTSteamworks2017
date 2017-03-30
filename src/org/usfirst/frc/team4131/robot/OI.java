@@ -26,13 +26,17 @@ public class OI{
 	private Joystick auxilliary = new Joystick(RobotMap.AUXILLIARY_CONTROLLER);
 	
 	private JoystickButton shift = new JoystickButton(rightStick, 4);
-	private JoystickButton collectGear = new JoystickButton(auxilliary, 5);
+	private JoystickButton collectGear = new JoystickButton(auxilliary, 3);
+	private JoystickButton deployPocket = new JoystickButton(auxilliary, 5);
+	private JoystickButton expelGear = new JoystickButton(auxilliary, 1);
 	private JoystickButton climb = new JoystickButton(auxilliary, 6);
 	private JoystickButton slowClimb = new JoystickButton(auxilliary, 4);
 	private JoystickButton ejectRope = new JoystickButton(auxilliary, 12);
 	private JoystickButton gearSeek = new JoystickButton(auxilliary, 11);
 	public OI(){
 		collectGear.whileHeld(new CollectGear());
+		deployPocket.whileHeld(new SetPocket(true));
+		expelGear.whileHeld(new SetClaw(true));
 		climb.whileHeld(new Climb());
 		slowClimb.whileHeld(new EngageClimber());
 		ejectRope.whileHeld(new EjectRope());

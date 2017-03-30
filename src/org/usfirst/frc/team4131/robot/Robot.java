@@ -15,6 +15,8 @@ public class Robot extends IterativeRobot{
 	//Subsystems
 	public static final DriveBase drive = new DriveBase();
 	public static final GearRamp gearRamp = new GearRamp();
+	public static final GearPocket gearPocket = new GearPocket();
+	public static final GearClaw gearClaw = new GearClaw();
 	public static final Climber climber = new Climber();
 	//OI
 	public static final OI OI = new OI();
