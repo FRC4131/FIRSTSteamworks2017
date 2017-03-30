@@ -37,13 +37,14 @@ public class VisionSeek extends Command{
 	protected void execute(){
 		if(controller.onTarget() && VisionThread.instance().hasData() && VisionThread.instance().hasTarget()) synchronized(VisionThread.LOCK){
 			lastKnownError = VisionThread.instance().getError();
-			if(!isFinished()) controller.setSetpoint(Robot.drive.getAngle() + lastKnownError);
+			controller.setSetpoint(Robot.drive.getAngle() + lastKnownError);
 		}
-		debugTable.putNumber("VGS.SPT", controller.getSetpoint());
-		debugTable.putNumber("VGS.ERR", controller.getError());
-		debugTable.putNumber("VGS.LKE", lastKnownError);
-		debugTable.putNumber("VGS.TOL", TOLERANCE);
+		debugTable.putNumber("Setpoint", controller.getSetpoint());
+		debugTable.putNumber("Error", controller.getError());
+		debugTable.putNumber("LastKnownError", lastKnownError);
+		debugTable.putNumber("Tolerance", TOLERANCE);
 		debugTable.putString("State", "Running");
+		debugTable.putNumber("Time", System.currentTimeMillis() % 10000);
 	}
 	protected boolean isFinished(){
 		return Math.abs(Robot.drive.getDistance()) > Math.abs(distance);
