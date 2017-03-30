@@ -3,6 +3,8 @@ package org.usfirst.frc.team4131.robot;
 import org.usfirst.frc.team4131.robot.commands.VisionGearSeek;
 import org.usfirst.frc.team4131.robot.subsystems.*;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -27,6 +29,19 @@ public class Robot extends IterativeRobot{
 		drive.resetAngle();
 		drive.resetDistance();
 		compressor.setClosedLoopControl(true);
+		
+		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+		camera.setResolution(800, 600);
+		camera.setFPS(10);
+		camera.setBrightness(20);
+		camera.getProperty("contrast").set(100);
+		camera.getProperty("saturation").set(100);
+		camera.setWhiteBalanceManual(6500);
+		camera.getProperty("gain").set(100);
+		camera.getProperty("sharpness").set(0);
+		camera.setExposureManual(3);
+		camera.getProperty("focus_auto").set(0);
+		camera.getProperty("focus_absolute").set(0);
 	}
 	@Override
 	public void autonomousInit(){
