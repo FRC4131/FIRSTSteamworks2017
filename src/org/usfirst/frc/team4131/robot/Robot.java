@@ -12,10 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot{
 	//Subsystems
 	public static final DriveBase drive = new DriveBase();
-	public static final Collector collector = new Collector();
-	public static final Hopper hopper = new Hopper();
+	public static final GearRamp gearRamp = new GearRamp();
 	public static final Climber climber = new Climber();
-	public static final Shooters shooters = new Shooters();
 	//OI
 	public static final OI OI = new OI();
 	//Electronic components
@@ -27,6 +25,7 @@ public class Robot extends IterativeRobot{
 		drive.resetAngle();
 		drive.resetDistance();
 		compressor.setClosedLoopControl(true);
+		compressor.start();
 	}
 	@Override
 	public void autonomousInit(){
@@ -37,7 +36,6 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void autonomousPeriodic(){
 		Scheduler.getInstance().run();
-		dashboard();
 	}
 	@Override
 	public void teleopInit(){
@@ -46,7 +44,6 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void teleopPeriodic(){
 		Scheduler.getInstance().run();
-		dashboard();
 	}
 	@Override
 	public void testInit(){
@@ -55,20 +52,17 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void testPeriodic(){
 		Scheduler.getInstance().run();
-		dashboard();
 	}
 	@Override
 	public void disabledInit(){
-		
 	}
 	@Override
 	public void disabledPeriodic(){
-		dashboard();
 	}
-	private void dashboard(){
+	public void robotPeriodic(){
 		SmartDashboard.putNumber("Angle", drive.getAngle());
 		SmartDashboard.putBoolean("AngleReady", drive.isAngleReady());
 		SmartDashboard.putNumber("Distance", drive.getDistance());
-		SmartDashboard.putNumber("ShooterAdjust", OI.getShooterAdjustment());
+		SmartDashboard.putBoolean("Pressurized", !compressor.getPressureSwitchValue());
 	}
 }

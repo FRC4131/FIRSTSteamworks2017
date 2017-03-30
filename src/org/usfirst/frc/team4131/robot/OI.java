@@ -25,28 +25,16 @@ public class OI{
 	private Joystick rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);
 	private Joystick auxilliary = new Joystick(RobotMap.AUXILLIARY_CONTROLLER);
 	
-	private JoystickButton collect = new JoystickButton(auxilliary, 5);
-	private JoystickButton spitOut = new JoystickButton(auxilliary, 3);
-	private JoystickButton ejectFuel = new JoystickButton(auxilliary, 11);
-	private JoystickButton chargeShooter = new JoystickButton(leftStick, 1);
-	private JoystickButton shoot = new JoystickButton(rightStick, 1);
+	private JoystickButton shift = new JoystickButton(rightStick, 4);
+	private JoystickButton collectGear = new JoystickButton(auxilliary, 5);
 	private JoystickButton climb = new JoystickButton(auxilliary, 6);
 	private JoystickButton slowClimb = new JoystickButton(auxilliary, 4);
 	private JoystickButton ejectRope = new JoystickButton(auxilliary, 12);
-	private JoystickButton killShooter = new JoystickButton(rightStick, 2);
-	private JoystickButton shift = new JoystickButton(rightStick, 4);
 	public OI(){
-		ChargeShooter chargeShooterCommand = new ChargeShooter();
-		
-		collect.whileHeld(new Collect());
-		spitOut.whileHeld(new SpitOut());
-		ejectFuel.whileHeld(new EjectFuel());
-		chargeShooter.whenPressed(chargeShooterCommand);
-		shoot.whileHeld(new Shoot());
+		collectGear.whileHeld(new CollectGear());
 		climb.whileHeld(new Climb());
 		slowClimb.whileHeld(new EngageClimber());
 		ejectRope.whileHeld(new EjectRope());
-		killShooter.cancelWhenPressed(chargeShooterCommand);
 	}
 	public double getLeftSpeed(){
 		return constrain(leftStick.getRawAxis(1));
@@ -56,9 +44,6 @@ public class OI{
 	}
 	public boolean shiftDown(){
 		return shift.get();
-	}
-	public double getShooterAdjustment(){
-		return (-constrain(leftStick.getRawAxis(3)) + 1)/2d;//0 is bottom, 1 is top
 	}
 	private double constrain(double value){
 		return Math.max(-1, Math.min(1, value));
