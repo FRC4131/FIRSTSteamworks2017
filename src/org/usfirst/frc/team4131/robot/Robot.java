@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4131.robot;
 
-import org.usfirst.frc.team4131.robot.commands.VisionGearSeek;
+import org.usfirst.frc.team4131.robot.commands.VisionSeek;
 import org.usfirst.frc.team4131.robot.subsystems.*;
 
 import edu.wpi.cscore.UsbCamera;
@@ -23,7 +23,7 @@ public class Robot extends IterativeRobot{
 	//Electronic components
 	public static final Compressor compressor = new Compressor(RobotMap.PCM_ID);
 	//Autonomous
-	private Command autonomousCommand = new VisionGearSeek();
+	private Command autonomousCommand = new VisionSeek(-40, 0.5);
 	@Override
 	public void robotInit(){
 		drive.resetAngle();

@@ -1,13 +1,17 @@
-from grip import GripPipeline
+import itertools, socket, time
 import cv2
-import itertools
-import socket
+from grip import GripPipeline
+
 
 stream = cv2.VideoCapture('http://roborio-4131-frc.local:1181/stream.mjpg')
 pipeline = GripPipeline()
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 while True:
-	ret, frame = stream.read()
+	connected, frame = stream.read()
+	if not connected:
+		print('Camera down')
+		time.sleep(1)
+		continue
 	pipeline.process(frame)
 	contours = pipeline.filter_contours_output
 	has_target = bool(contours)

@@ -35,6 +35,7 @@ public class OI{
 	private JoystickButton ejectRope = new JoystickButton(auxilliary, 12);
 	private JoystickButton killShooter = new JoystickButton(rightStick, 2);
 	private JoystickButton shift = new JoystickButton(rightStick, 4);
+	private JoystickButton gearSeek = new JoystickButton(auxilliary, 11);
 	public OI(){
 		ChargeShooter chargeShooterCommand = new ChargeShooter();
 		
@@ -47,6 +48,7 @@ public class OI{
 		slowClimb.whileHeld(new EngageClimber());
 		ejectRope.whileHeld(new EjectRope());
 		killShooter.cancelWhenPressed(chargeShooterCommand);
+		gearSeek.whileHeld(new VisionSeek(-Integer.MAX_VALUE, 0.5));
 	}
 	public double getLeftSpeed(){
 		return constrain(leftStick.getRawAxis(1));
