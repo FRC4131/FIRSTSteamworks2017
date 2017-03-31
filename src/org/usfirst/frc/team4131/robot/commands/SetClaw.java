@@ -15,10 +15,4 @@ public class SetClaw extends Command{
 		else Robot.gearClaw.close();
 	}
 	protected boolean isFinished(){return true;}
-	protected void end(){
-		Robot.gearClaw.close();
-	}
-	protected void interrupted(){
-		Robot.gearClaw.close();
-	}
 }

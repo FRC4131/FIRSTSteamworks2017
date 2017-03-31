@@ -15,10 +15,4 @@ public class SetPocket extends Command{
 		else Robot.gearPocket.retract();
 	}
 	protected boolean isFinished(){return true;}
-	protected void end(){
-		Robot.gearPocket.retract();
-	}
-	protected void interrupted(){
-		Robot.gearPocket.retract();
-	}
 }

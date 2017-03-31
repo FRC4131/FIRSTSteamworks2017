@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4131.robot;
 
-import org.usfirst.frc.team4131.robot.commands.VisionSeek;
+import org.usfirst.frc.team4131.robot.commands.*;
 import org.usfirst.frc.team4131.robot.subsystems.*;
 
 import edu.wpi.cscore.UsbCamera;
@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -23,7 +24,16 @@ public class Robot extends IterativeRobot{
 	//Electronic components
 	public static final Compressor compressor = new Compressor(RobotMap.PCM_ID);
 	//Autonomous
-	private Command autonomousCommand = new VisionSeek(-40, 0.5);
+	private Command autonomousCommand = new CommandGroup(){{
+		addSequential(new DriveStraight(-48, 0, 0.5));
+		addSequential(new TurnTo(60));
+		addSequential(new SetPocket(true));
+		addSequential(new VisionSeek(-40, 0.5));
+		addSequential(new SetClaw(true));
+		addSequential(new DriveFor(0.25, 0.5));
+		addSequential(new SetClaw(false));
+		addSequential(new SetPocket(false));
+	}};
 	@Override
 	public void robotInit(){
 		drive.resetAngle();

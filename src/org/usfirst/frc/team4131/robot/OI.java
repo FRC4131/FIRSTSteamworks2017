@@ -36,7 +36,9 @@ public class OI{
 	public OI(){
 		collectGear.whileHeld(new CollectGear());
 		deployPocket.whileHeld(new SetPocket(true));
+		deployPocket.whenReleased(new SetPocket(false));
 		expelGear.whileHeld(new SetClaw(true));
+		expelGear.whenReleased(new SetClaw(false));
 		climb.whileHeld(new Climb());
 		slowClimb.whileHeld(new EngageClimber());
 		ejectRope.whileHeld(new EjectRope());
