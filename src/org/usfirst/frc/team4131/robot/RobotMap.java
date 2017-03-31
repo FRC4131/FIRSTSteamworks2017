@@ -21,13 +21,13 @@ public class RobotMap {
 	
 	//Solenoid slots
 	public static final int SHIFTER1 = 0;
-	public static final int SHIFTER2 = 1;
-	public static final int GEAR_RAMP1 = 2;
-	public static final int GEAR_RAMP2 = 3;
-	public static final int GEAR_POCKET1 = 4;
-	public static final int GEAR_POCKET2 = 5;
-	public static final int GEAR_CLAW1 = 6;
-	public static final int GEAR_CLAW2 = 7;
+	public static final int SHIFTER2 = 6;
+	public static final int GEAR_RAMP1 = 4;
+	public static final int GEAR_RAMP2 = 5;
+	public static final int GEAR_POCKET1 = 1;
+	public static final int GEAR_POCKET2 = 7;
+	public static final int GEAR_CLAW1 = 2;
+	public static final int GEAR_CLAW2 = 3;
 	
 	//Constants
 	public static final int DRIVE_ENCODER_TICKS = 20;
