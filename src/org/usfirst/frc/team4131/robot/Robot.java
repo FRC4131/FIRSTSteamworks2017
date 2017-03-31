@@ -2,11 +2,13 @@ package org.usfirst.frc.team4131.robot;
 
 import org.usfirst.frc.team4131.robot.commands.*;
 import org.usfirst.frc.team4131.robot.subsystems.*;
+import org.usfirst.frc.team4131.robot.utility.VisionThread;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -23,6 +25,7 @@ public class Robot extends IterativeRobot{
 	public static final OI OI = new OI();
 	//Electronic components
 	public static final Compressor compressor = new Compressor(RobotMap.PCM_ID);
+	public static final Spark lights = new Spark(9);
 	//Autonomous
 	private Command autonomousCommand = new CommandGroup(){{
 		addSequential(new DriveStraight(-48, 0, 0.5));
@@ -52,6 +55,8 @@ public class Robot extends IterativeRobot{
 		camera.setExposureManual(3);
 		camera.getProperty("focus_auto").set(0);
 		camera.getProperty("focus_absolute").set(0);
+		
+		VisionThread.instance();
 	}
 	@Override
 	public void autonomousInit(){
@@ -72,20 +77,17 @@ public class Robot extends IterativeRobot{
 		Scheduler.getInstance().run();
 	}
 	@Override
-	public void testInit(){
-		
-	}
+	public void testInit(){}
 	@Override
 	public void testPeriodic(){
 		Scheduler.getInstance().run();
 	}
 	@Override
-	public void disabledInit(){
-	}
+	public void disabledInit(){}
 	@Override
-	public void disabledPeriodic(){
-	}
+	public void disabledPeriodic(){}
 	public void robotPeriodic(){
+		lights.set(1);
 		SmartDashboard.putNumber("Angle", drive.getAngle());
 		SmartDashboard.putBoolean("AngleReady", drive.isAngleReady());
 		SmartDashboard.putNumber("Distance", drive.getDistance());

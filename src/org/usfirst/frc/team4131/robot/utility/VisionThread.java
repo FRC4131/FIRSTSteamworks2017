@@ -14,10 +14,11 @@ public class VisionThread extends Thread{
 	private static VisionThread instance;
 	private boolean hasData = false, hasTarget = false;
 	private double turn = 0;
-	private NetworkTable table = NetworkTable.getTable("Vision");
+	private NetworkTable table = NetworkTable.getTable("VisionThread");
 	private VisionThread(){super("4131-Vision");}
 	@Override
 	public void run(){
+		table.putNumber("StartedAt", System.currentTimeMillis() % 10000);
 		try(DatagramSocket socket = new DatagramSocket(5800)){
 			byte[] b = new byte[1024];
 			DatagramPacket packet = new DatagramPacket(b, b.length);
@@ -37,7 +38,7 @@ public class VisionThread extends Thread{
 				table.putNumber("Turn", turn);
 				table.putNumber("Time", System.currentTimeMillis() % 10000);
 			}
-		}catch(Exception ex){
+		}catch(Throwable ex){
 			DriverStation.reportError("Error in vision\n" + ex, true);
 		}
 	}

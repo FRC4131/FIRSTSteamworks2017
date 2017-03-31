@@ -25,6 +25,7 @@ public class OI{
 	private Joystick rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);
 	private Joystick auxilliary = new Joystick(RobotMap.AUXILLIARY_CONTROLLER);
 	
+	//private JoystickButton 
 	private JoystickButton shift = new JoystickButton(rightStick, 4);
 	private JoystickButton collectGear = new JoystickButton(auxilliary, 3);
 	private JoystickButton deployPocket = new JoystickButton(auxilliary, 5);

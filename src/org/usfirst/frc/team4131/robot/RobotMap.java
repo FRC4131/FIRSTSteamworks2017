@@ -35,5 +35,5 @@ public class RobotMap {
 	public static final double DRIVE_WHEEL_CIRCUMFERENCE = 2 * Math.PI * DRIVE_WHEEL_RADIUS;
 	public static final double MAGIC_DRIVE_CONSTANT = 1d/240 * 59/48 * 51/48;//Arbitrary but it works
 	public static final double DRIVE_CONVERSION_FACTOR = HIGH_GEAR_RATIO * DRIVE_WHEEL_CIRCUMFERENCE * MAGIC_DRIVE_CONSTANT;
-	public static final boolean DRIVE_LEFT_INVERTED = true, DRIVE_RIGHT_INVERTED = false;
+	public static final boolean DRIVE_LEFT_INVERTED = false, DRIVE_RIGHT_INVERTED = true;
 }

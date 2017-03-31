@@ -13,7 +13,7 @@ public class VisionSeek extends Command{
 	private double distance;
 	private double speed;
 	private PIDController controller = new PIDController(0.05, 0, 0, Robot.drive.getAngleSource(), steer -> Robot.drive.move(speed - steer, speed + steer));
-	private NetworkTable debugTable = NetworkTable.getTable("VisionSeek");
+//	private NetworkTable debugTable = NetworkTable.getTable("VisionSeek");
 	public VisionSeek(double distance, double speed){
 		requires(Robot.drive);
 		speed = Math.abs(speed);
@@ -31,7 +31,7 @@ public class VisionSeek extends Command{
 		controller.reset();
 		controller.enable();
 		lastKnownError = 2 * TOLERANCE;//Not done before we've begun
-		debugTable.putString("State", "Initialized");
+//		debugTable.putString("State", "Initialized");
 	}
 	@Override
 	protected void execute(){
@@ -39,12 +39,12 @@ public class VisionSeek extends Command{
 			lastKnownError = VisionThread.instance().getError();
 			controller.setSetpoint(Robot.drive.getAngle() + lastKnownError);
 		}
-		debugTable.putNumber("Setpoint", controller.getSetpoint());
-		debugTable.putNumber("Error", controller.getError());
-		debugTable.putNumber("LastKnownError", lastKnownError);
-		debugTable.putNumber("Tolerance", TOLERANCE);
-		debugTable.putString("State", "Running");
-		debugTable.putNumber("Time", System.currentTimeMillis() % 10000);
+//		debugTable.putNumber("Setpoint", controller.getSetpoint());
+//		debugTable.putNumber("Error", controller.getError());
+//		debugTable.putNumber("LastKnownError", lastKnownError);
+//		debugTable.putNumber("Tolerance", TOLERANCE);
+//		debugTable.putString("State", "Running");
+//		debugTable.putNumber("Time", System.currentTimeMillis() % 10000);
 	}
 	protected boolean isFinished(){
 		return Math.abs(Robot.drive.getDistance()) > Math.abs(distance);
@@ -52,11 +52,11 @@ public class VisionSeek extends Command{
 	protected void end(){
 		controller.disable();
 		Robot.drive.move(0, 0);
-		debugTable.putString("State", "Ended");
+//		debugTable.putString("State", "Ended");
 	}
 	protected void interrupted(){
 		controller.disable();
 		Robot.drive.move(0, 0);
-		debugTable.putString("State", "Interrupted");
+//		debugTable.putString("State", "Interrupted");
 	}
 }
