@@ -71,6 +71,9 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void teleopInit(){
 		if(autonomousCommand != null) autonomousCommand.cancel();
+		gearClaw.close();
+		gearPocket.retract();
+		gearRamp.retract();
 	}
 	@Override
 	public void teleopPeriodic(){

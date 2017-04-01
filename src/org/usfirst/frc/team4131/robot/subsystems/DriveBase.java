@@ -27,7 +27,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * @author Calvin, Ian
  * @since 2/17/2017
  */
-public class DriveBase extends Subsystem {
+public class DriveBase extends Subsystem{
 	private CANTalon leftMotor, rightMotor;
 	private DoubleSolenoid shifters;
 	private AHRS imu;
@@ -73,10 +73,10 @@ public class DriveBase extends Subsystem {
 		rightMotor.set(right);
 	}
 	public void shiftUp(){
-		shifters.set(DoubleSolenoid.Value.kReverse);
+		shifters.set(DoubleSolenoid.Value.kForward);
 	}
 	public void shiftDown(){
-		shifters.set(DoubleSolenoid.Value.kForward);
+		shifters.set(DoubleSolenoid.Value.kReverse);
 	}
 	public void resetDistance(){
 		leftMotor.setEncPosition(0);
