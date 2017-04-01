@@ -16,8 +16,8 @@ public class RobotMap {
 	//Motors
 	public static final int DRIVE_LEFT[] = {1, 2, 3};
 	public static final int DRIVE_RIGHT[] = {4, 5, 6};
-	public static final int CLIMBER_MOTOR1 = 13;
-	public static final int CLIMBER_MOTOR2 = 14;
+	public static final int CLIMBER_MOTOR1 = 7;
+	public static final int CLIMBER_MOTOR2 = 8;
 	
 	//Solenoid slots
 	public static final int SHIFTER1 = 0;
