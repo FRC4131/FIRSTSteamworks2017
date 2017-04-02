@@ -32,8 +32,7 @@ public class OI{
 	private JoystickButton expelGear = new JoystickButton(auxilliary, 1);
 	private JoystickButton climb = new JoystickButton(auxilliary, 6);
 	private JoystickButton slowClimb = new JoystickButton(auxilliary, 4);
-	private JoystickButton ejectRope = new JoystickButton(auxilliary, 12);
-	private JoystickButton gearSeek = new JoystickButton(auxilliary, 11);
+	private JoystickButton reducePower = new JoystickButton(auxilliary, 7);
 	public OI(){
 		collectGear.whileHeld(new CollectGear());
 		deployPocket.whileHeld(new SetPocket(true));
@@ -42,8 +41,6 @@ public class OI{
 		expelGear.whenReleased(new SetClaw(false));
 		climb.whileHeld(new Climb());
 		slowClimb.whileHeld(new EngageClimber());
-		ejectRope.whileHeld(new EjectRope());
-		gearSeek.whileHeld(new VisionSeek(-Integer.MAX_VALUE, 0.5));
 	}
 	public double getLeftSpeed(){
 		return constrain(leftStick.getRawAxis(1));
@@ -53,6 +50,9 @@ public class OI{
 	}
 	public boolean shiftDown(){
 		return shift.get();
+	}
+	public boolean reducePower(){
+		return reducePower.get();
 	}
 	private double constrain(double value){
 		return Math.max(-1, Math.min(1, value));

@@ -29,6 +29,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class DriveBase extends Subsystem{
 	private CANTalon leftMotor, rightMotor;
+	private CANTalon[] leftFollowers = new CANTalon[2], rightFollowers = new CANTalon[2];
 	private DoubleSolenoid shifters;
 	private AHRS imu;
 	private float imuOffset = 0;
@@ -54,10 +55,12 @@ public class DriveBase extends Subsystem{
 			CANTalon left = new CANTalon(RobotMap.DRIVE_LEFT[i]);
 			left.changeControlMode(TalonControlMode.Follower);
 			left.set(RobotMap.DRIVE_LEFT[0]);
+			leftFollowers[i-1] = left;
 			
 			CANTalon right = new CANTalon(RobotMap.DRIVE_RIGHT[i]);
 			right.changeControlMode(TalonControlMode.Follower);
 			right.set(RobotMap.DRIVE_RIGHT[0]);
+			rightFollowers[i-1] = right;
 		}
 		//Create shifters
 		shifters = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.SHIFTER1, RobotMap.SHIFTER2);
@@ -78,6 +81,11 @@ public class DriveBase extends Subsystem{
 	public void shiftDown(){
 		shifters.set(DoubleSolenoid.Value.kReverse);
 	}
+	public void setHighPower(boolean highPower){
+		double voltage = highPower ? RobotMap.MAX_VOLTAGE : RobotMap.REDUCED_VOLTAGE;
+		leftFollowers[0].configPeakOutputVoltage(voltage, -voltage);
+		rightFollowers[0].configPeakOutputVoltage(voltage, -voltage);
+	}
 	public void resetDistance(){
 		leftMotor.setEncPosition(0);
 		rightMotor.setEncPosition(0);
@@ -85,10 +93,10 @@ public class DriveBase extends Subsystem{
 	public double getDistance(){
 		SmartDashboard.putNumber( "EncLeft",  leftMotor.getEncPosition());
 		SmartDashboard.putNumber("EncRight", rightMotor.getEncPosition());
-		return compute(leftMotor.getEncPosition(), rightMotor.getEncPosition());
+		return compute(leftMotor.getEncPosition());
 	}
 	public double getVelocity(){
-		return compute(leftMotor.getEncVelocity(), rightMotor.getEncVelocity());
+		return compute(leftMotor.getEncVelocity());
 	}
 	/**
 	 * Utility method for computing an output value from two encoder input values.
@@ -104,6 +112,10 @@ public class DriveBase extends Subsystem{
 		if(RobotMap.DRIVE_LEFT_INVERTED) left = -left;
 		if(RobotMap.DRIVE_RIGHT_INVERTED) right = -right;
 		return -(left + right) / 2 * RobotMap.DRIVE_CONVERSION_FACTOR;
+	}
+	private double compute(double left){
+		if(RobotMap.DRIVE_LEFT_INVERTED) left = -left;
+		return -left * RobotMap.DRIVE_CONVERSION_FACTOR;
 	}
 	public PIDSource getDistanceSource(){
 		return new LambdaPIDSource(this::getDistance, this::getVelocity);

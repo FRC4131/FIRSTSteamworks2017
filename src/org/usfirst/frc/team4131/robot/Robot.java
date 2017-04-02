@@ -27,15 +27,19 @@ public class Robot extends IterativeRobot{
 	public static final Compressor compressor = new Compressor(RobotMap.PCM_ID);
 	public static final Spark lights = new Spark(9);
 	//Autonomous
+//	private Command autonomousCommand = new CommandGroup(){{
+//		addSequential(new DriveStraight(-48, 0, 0.5));
+//		addSequential(new TurnTo(60));
+//		addSequential(new SetPocket(true));
+//		addSequential(new VisionSeek(-40, 0.5));
+//		addSequential(new SetClaw(true));
+//		addSequential(new DriveFor(0.25, 0.5));
+//		addSequential(new SetClaw(false));
+//		addSequential(new SetPocket(false));
+//	}};
 	private Command autonomousCommand = new CommandGroup(){{
-		addSequential(new DriveStraight(-48, 0, 0.5));
-		addSequential(new TurnTo(60));
 		addSequential(new SetPocket(true));
-		addSequential(new VisionSeek(-40, 0.5));
-		addSequential(new SetClaw(true));
-		addSequential(new DriveFor(0.25, 0.5));
-		addSequential(new SetClaw(false));
-		addSequential(new SetPocket(false));
+		addSequential(new DriveStraightFor(5, 0, -0.5));
 	}};
 	@Override
 	public void robotInit(){
@@ -44,7 +48,7 @@ public class Robot extends IterativeRobot{
 		compressor.setClosedLoopControl(true);
 		
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-		camera.setResolution(800, 600);
+		camera.setResolution(VisionThread.IMAGE_WIDTH, VisionThread.IMAGE_HEIGHT);
 		camera.setFPS(10);
 		camera.setBrightness(20);
 		camera.getProperty("contrast").set(100);

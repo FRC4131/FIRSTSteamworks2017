@@ -7,8 +7,9 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 public class VisionThread extends Thread{
+	public static final int IMAGE_WIDTH = 640, IMAGE_HEIGHT = 480;
 	@SuppressWarnings("unused")
-	private static final double IMAGE_WIDTH = 800, IMAGE_HEIGHT = 600, FOV_X = 72, FOV_Y = 57.6;
+	private static final double FOV_X = 72, FOV_Y = 57.6;
 	private static final double FOCAL_LENGTH = IMAGE_WIDTH/2 / Math.tan(Math.toRadians(FOV_X / 2));
 	public static final Object LOCK = new Object();
 	private static VisionThread instance;

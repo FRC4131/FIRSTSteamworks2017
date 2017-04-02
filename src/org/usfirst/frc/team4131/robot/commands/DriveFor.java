@@ -19,7 +19,7 @@ public class DriveFor extends Command{
 		timer.start();
 	}
 	protected void execute(){
-		Robot.drive.shiftUp();
+		Robot.drive.shiftDown();
 		Robot.drive.move(speed, speed);
 	}
 	protected boolean isFinished(){

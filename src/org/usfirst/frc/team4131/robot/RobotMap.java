@@ -7,7 +7,7 @@ package org.usfirst.frc.team4131.robot;
  * floating around.
  */
 public class RobotMap {
-	public static final int PCM_ID = 62;
+	public static final int PDP_ID = 61, PCM_ID = 62;
 	//Input devices
 	public static final int LEFT_JOYSTICK = 0;
 	public static final int RIGHT_JOYSTICK = 1;
@@ -36,4 +36,5 @@ public class RobotMap {
 	public static final double MAGIC_DRIVE_CONSTANT = 1d/240 * 59/48 * 51/48;//Arbitrary but it works
 	public static final double DRIVE_CONVERSION_FACTOR = HIGH_GEAR_RATIO * DRIVE_WHEEL_CIRCUMFERENCE * MAGIC_DRIVE_CONSTANT;
 	public static final boolean DRIVE_LEFT_INVERTED = false, DRIVE_RIGHT_INVERTED = true;
+	public static final double MAX_VOLTAGE = 12, REDUCED_VOLTAGE = 0.2 * MAX_VOLTAGE;
 }
