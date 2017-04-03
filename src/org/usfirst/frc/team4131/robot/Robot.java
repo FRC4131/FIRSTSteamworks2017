@@ -40,6 +40,8 @@ public class Robot extends IterativeRobot{
 	private Command autonomousCommand = new CommandGroup(){{
 		addSequential(new SetPocket(true));
 		addSequential(new DriveStraightFor(5, 0, -0.5));
+		addSequential(new DriveStraightFor(0.1, 0, 0.5));
+		addSequential(new SetClaw(true));
 	}};
 	@Override
 	public void robotInit(){
