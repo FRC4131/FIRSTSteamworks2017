@@ -20,6 +20,7 @@ public class VisionThread extends Thread{
 	@Override
 	public void run(){
 		table.putNumber("StartedAt", System.currentTimeMillis() % 10000);
+		table.putString("Pi", "Not Found");
 		try(DatagramSocket socket = new DatagramSocket(5800)){
 			byte[] b = new byte[1024];
 			DatagramPacket packet = new DatagramPacket(b, b.length);
@@ -38,6 +39,7 @@ public class VisionThread extends Thread{
 				table.putBoolean("HasTarget", hasTarget);
 				table.putNumber("Turn", turn);
 				table.putNumber("Time", System.currentTimeMillis() % 10000);
+				table.putString("Pi", packet.getAddress().getHostAddress());
 			}
 		}catch(Throwable ex){
 			DriverStation.reportError("Error in vision\n" + ex, true);
