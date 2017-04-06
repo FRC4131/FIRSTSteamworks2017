@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4131.robot;
 
-import org.usfirst.frc.team4131.robot.commands.*;
+import org.usfirst.frc.team4131.robot.commands.DriveStraightFor;
+import org.usfirst.frc.team4131.robot.commands.SetClaw;
+import org.usfirst.frc.team4131.robot.commands.SetPocket;
 import org.usfirst.frc.team4131.robot.subsystems.*;
 import org.usfirst.frc.team4131.robot.utility.VisionThread;
 
@@ -12,6 +14,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot{
@@ -26,23 +29,8 @@ public class Robot extends IterativeRobot{
 	//Electronic components
 	public static final Compressor compressor = new Compressor(RobotMap.PCM_ID);
 	public static final Spark lights = new Spark(9);
-	//Autonomous
-//	private Command autonomousCommand = new CommandGroup(){{
-//		addSequential(new DriveStraight(-48, 0, 0.5));
-//		addSequential(new TurnTo(60));
-//		addSequential(new SetPocket(true));
-//		addSequential(new VisionSeek(-40, 0.5));
-//		addSequential(new SetClaw(true));
-//		addSequential(new DriveFor(0.25, 0.5));
-//		addSequential(new SetClaw(false));
-//		addSequential(new SetPocket(false));
-//	}};
-	private Command autonomousCommand = new CommandGroup(){{
-		addSequential(new SetPocket(true));
-		addSequential(new DriveStraightFor(5, 0, -0.5));
-		addSequential(new DriveStraightFor(0.1, 0, 0.5));
-		addSequential(new SetClaw(true));
-	}};
+	private SendableChooser<Command> auton = new SendableChooser<>();
+	private Command autonomousCommand = null;
 	@Override
 	public void robotInit(){
 		drive.resetAngle();
@@ -63,11 +51,21 @@ public class Robot extends IterativeRobot{
 		camera.getProperty("focus_absolute").set(0);
 		
 		VisionThread.instance();
+		
+		auton.addDefault("Center Gear", new CommandGroup(){{
+			addSequential(new SetPocket(true));
+			addSequential(new DriveStraightFor(2.5, 0, -0.5));
+			addSequential(new DriveStraightFor(0.1, 0, 0.5));
+			addSequential(new SetClaw(true));
+		}});
+		auton.addObject("Side Mobility", new DriveStraightFor(5, 0, -0.5));
+		SmartDashboard.putData("Autonomous", auton);
 	}
 	@Override
 	public void autonomousInit(){
 		drive.resetAngle();
 		drive.resetDistance();
+		autonomousCommand = auton.getSelected();
 		if(autonomousCommand != null) autonomousCommand.start();
 	}
 	@Override
@@ -88,9 +86,7 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void testInit(){}
 	@Override
-	public void testPeriodic(){
-		Scheduler.getInstance().run();
-	}
+	public void testPeriodic(){}//No scheduler so the robot idles
 	@Override
 	public void disabledInit(){}
 	@Override

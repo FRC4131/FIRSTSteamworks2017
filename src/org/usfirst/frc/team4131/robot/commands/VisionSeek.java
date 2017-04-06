@@ -5,7 +5,6 @@ import org.usfirst.frc.team4131.robot.utility.VisionThread;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 public class VisionSeek extends Command{
 	private static final double TOLERANCE = 5;
@@ -13,7 +12,6 @@ public class VisionSeek extends Command{
 	private double distance;
 	private double speed;
 	private PIDController controller = new PIDController(0.05, 0, 0, Robot.drive.getAngleSource(), steer -> Robot.drive.move(speed - steer, speed + steer));
-//	private NetworkTable debugTable = NetworkTable.getTable("VisionSeek");
 	public VisionSeek(double distance, double speed){
 		requires(Robot.drive);
 		speed = Math.abs(speed);
