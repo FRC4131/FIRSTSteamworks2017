@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * ========== Test Procedure ==========
@@ -91,8 +90,6 @@ public class DriveBase extends Subsystem{
 		rightMotor.setEncPosition(0);
 	}
 	public double getDistance(){
-		SmartDashboard.putNumber( "EncLeft",  leftMotor.getEncPosition());
-		SmartDashboard.putNumber("EncRight", rightMotor.getEncPosition());
 		return compute(leftMotor.getEncPosition());
 	}
 	public double getVelocity(){

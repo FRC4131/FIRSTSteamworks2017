@@ -44,7 +44,7 @@ public class Robot extends IterativeRobot{
 		camera.getProperty("contrast").set(100);
 		camera.getProperty("saturation").set(100);
 		camera.setWhiteBalanceManual(6500);
-		camera.getProperty("gain").set(100);
+		camera.getProperty("gain").set(0);
 		camera.getProperty("sharpness").set(0);
 		camera.setExposureManual(3);
 		camera.getProperty("focus_auto").set(0);
@@ -86,7 +86,7 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void testInit(){}
 	@Override
-	public void testPeriodic(){}//No scheduler so the robot idles
+	public void testPeriodic(){lights.set(1);}//No scheduler so the robot idles
 	@Override
 	public void disabledInit(){}
 	@Override
