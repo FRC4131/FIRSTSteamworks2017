@@ -56,7 +56,7 @@ public class Robot extends IterativeRobot{
 		
 		auton.addDefault("Center Gear", new CommandGroup(){{
 			addSequential(new SetPocket(true));
-			addSequential(new DriveStraightFor(1.3, 0, -0.5));
+			addSequential(new DriveStraightFor(1.1, 0, -0.5));
 			addSequential(new WaitCommand(0.7));
 			addSequential(new DriveStraightFor(0.1, 0, 0.5));
 			addSequential(new SetClaw(true));
