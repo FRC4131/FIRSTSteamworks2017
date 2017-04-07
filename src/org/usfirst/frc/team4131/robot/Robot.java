@@ -35,6 +35,7 @@ public class Robot extends IterativeRobot{
 	public void robotInit(){
 		drive.resetAngle();
 		drive.resetDistance();
+		compressor.clearAllPCMStickyFaults();
 		compressor.setClosedLoopControl(true);
 		
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
@@ -54,7 +55,7 @@ public class Robot extends IterativeRobot{
 		
 		auton.addDefault("Center Gear", new CommandGroup(){{
 			addSequential(new SetPocket(true));
-			addSequential(new DriveStraightFor(2.5, 0, -0.5));
+			addSequential(new DriveStraightFor(2.6, 0, -0.5));
 			addSequential(new DriveStraightFor(0.1, 0, 0.5));
 			addSequential(new SetClaw(true));
 		}});
@@ -97,5 +98,8 @@ public class Robot extends IterativeRobot{
 		SmartDashboard.putBoolean("AngleReady", drive.isAngleReady());
 		SmartDashboard.putNumber("Distance", drive.getDistance());
 		SmartDashboard.putBoolean("Pressurized", !compressor.getPressureSwitchValue());
+		SmartDashboard.putBoolean("PressureCharging", compressor.enabled());
+		SmartDashboard.putBoolean("PressureControlled", compressor.getClosedLoopControl());
+		SmartDashboard.putNumber("PressureCurrent", compressor.getCompressorCurrent());
 	}
 }
