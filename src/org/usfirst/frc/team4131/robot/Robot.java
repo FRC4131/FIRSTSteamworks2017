@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -55,11 +56,12 @@ public class Robot extends IterativeRobot{
 		
 		auton.addDefault("Center Gear", new CommandGroup(){{
 			addSequential(new SetPocket(true));
-			addSequential(new DriveStraightFor(2.6, 0, -0.5));
+			addSequential(new DriveStraightFor(1.3, 0, -0.5));
+			addSequential(new WaitCommand(0.7));
 			addSequential(new DriveStraightFor(0.1, 0, 0.5));
 			addSequential(new SetClaw(true));
 		}});
-		auton.addObject("Side Mobility", new DriveStraightFor(5, 0, -0.5));
+		auton.addObject("Side Mobility", new DriveStraightFor(2.7, 0, -0.5));
 		SmartDashboard.putData("Autonomous", auton);
 	}
 	@Override
