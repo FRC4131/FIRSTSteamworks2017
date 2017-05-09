@@ -26,10 +26,11 @@ public class Move extends Command {
 	public void execute() {
 		Robot.drive.move(Robot.OI.getLeftSpeed(), Robot.OI.getRightSpeed());
 		if(Robot.OI.shiftDown()){
-			Robot.drive.shiftDown();
-		}else{
 			Robot.drive.shiftUp();
+		}else{
+			Robot.drive.shiftDown();
 		}
+		Robot.drive.setHighPower(!Robot.OI.reducePower());
 	}
 	protected boolean isFinished() {
 		return false;
