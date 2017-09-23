@@ -1,107 +1,155 @@
 package org.usfirst.frc.team4131.robot;
 
-import org.usfirst.frc.team4131.robot.commands.DriveStraightFor;
-import org.usfirst.frc.team4131.robot.commands.SetClaw;
-import org.usfirst.frc.team4131.robot.commands.SetPocket;
-import org.usfirst.frc.team4131.robot.subsystems.*;
-import org.usfirst.frc.team4131.robot.utility.VisionThread;
+import com.ctre.CANTalon;
 
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.WaitCommand;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Robot extends IterativeRobot{
-	//Subsystems
-	public static final DriveBase drive = new DriveBase();
-	public static final GearRamp gearRamp = new GearRamp();
-	public static final GearPocket gearPocket = new GearPocket();
-	public static final GearClaw gearClaw = new GearClaw();
-	public static final Climber climber = new Climber();
-	//OI
-	public static final OI OI = new OI();
-	//Electronic components
-	public static final Compressor compressor = new Compressor(RobotMap.PCM_ID);
-	public static final Spark lights = new Spark(9);
-	private SendableChooser<Command> auton = new SendableChooser<>();
-	private Command autonomousCommand = null;
+/**
+ * The VM is configured to automatically run this class, and to call the
+ * functions corresponding to each mode, as described in the IterativeRobot
+ * documentation. If you change the name of this class or the package after
+ * creating this project, you must also update the manifest file in the resource
+ * directory.
+ */
+public class Robot extends IterativeRobot {
+	final String defaultAuto = "Default";
+	final String customAuto = "My Auto";
+	String autoSelected;
+	SendableChooser<String> chooser = new SendableChooser<>();
+	static Joystick LeftJoy = new Joystick(0);
+	static Joystick RightJoy = new Joystick(1);
+	static Joystick SecondaryJoy = new Joystick(2);
+	static CANTalon LF = new CANTalon(3);
+	static CANTalon LB = new CANTalon(2);
+	static CANTalon RF = new CANTalon(6);
+	static CANTalon RB = new CANTalon(5);
+	static RobotDrive Drive = new RobotDrive(LF, LB, RF, RB);
+	static Compressor Comp = new Compressor(62);
+	
+	static CANTalon C1 = new CANTalon(7);
+	static CANTalon C2 = new CANTalon(8);
+	
+	static Solenoid Clamp1 = new Solenoid(62, 1);
+	static Solenoid Clamp2 = new Solenoid(62, 0);
+	
+	static Solenoid Basket1 = new Solenoid(62, 2);
+	static Solenoid Basket2 = new Solenoid(62, 3);
+	
+	double ClimbSpeed = 0.5; 
+	
+	/**
+	 * This function is run when the robot is first started up and should be
+	 * used for any initialization code.
+	 */
 	@Override
-	public void robotInit(){
-		drive.resetAngle();
-		drive.resetDistance();
-		compressor.clearAllPCMStickyFaults();
-		compressor.setClosedLoopControl(true);
+	public void robotInit() {
+		chooser.addDefault("Default Auto", defaultAuto);
+		chooser.addObject("My Auto", customAuto);
+		SmartDashboard.putData("Auto choices", chooser);
+	}
+
+	/**
+	 * This autonomous (along with the chooser code above) shows how to select
+	 * between different autonomous modes using the dashboard. The sendable
+	 * chooser code works with the Java SmartDashboard. If you prefer the
+	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
+	 * getString line to get the auto name from the text box below the Gyro
+	 *
+	 * You can add additional auto modes by adding additional comparisons to the
+	 * switch structure below with additional strings. If using the
+	 * SendableChooser make sure to add them to the chooser code above as well.
+	 */
+	@Override
+	public void autonomousInit() {
+		autoSelected = chooser.getSelected();
+		// autoSelected = SmartDashboard.getString("Auto Selector",
+		// defaultAuto);
+		System.out.println("Auto selected: " + autoSelected);
+	}
+
+	/**
+	 * This function is called periodically during autonomous
+	 */
+	@Override
+	public void autonomousPeriodic() {
+		switch (autoSelected) {
+		case customAuto:
+			// Put custom auto code here
+			break;
+		case defaultAuto:
+		default:
+			// Put default auto code here
+			break;
+		}
+	}
+
+	/**
+	 * This function is called periodically during operator control
+	 */
+	@Override
+	public void teleopPeriodic() {
+		Drive.tankDrive(LeftJoy, RightJoy);
 		
-		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-		camera.setResolution(VisionThread.IMAGE_WIDTH, VisionThread.IMAGE_HEIGHT);
-		camera.setFPS(10);
-		camera.setBrightness(20);
-		camera.getProperty("contrast").set(100);
-		camera.getProperty("saturation").set(100);
-		camera.setWhiteBalanceManual(6500);
-		camera.getProperty("gain").set(0);
-		camera.getProperty("sharpness").set(0);
-		camera.setExposureManual(3);
-		camera.getProperty("focus_auto").set(0);
-		camera.getProperty("focus_absolute").set(0);
+				
+		if(SecondaryJoy.getRawButton(6) == true)
+		{
+			if(ClimbSpeed < 1.0)
+			{
+				ClimbSpeed = ClimbSpeed + 0.01;
+			}
+			C1.set(ClimbSpeed);
+			C2.set(ClimbSpeed);
+		}
+		else if(SecondaryJoy.getRawButton(4) == true)
+		{
+			ClimbSpeed = 0.5;
+			C1.set(ClimbSpeed);
+			C2.set(ClimbSpeed);
+		}
+		else
+		{
+			C1.set(0);
+			C2.set(0);
+		}
 		
-		VisionThread.instance();
+		if(SecondaryJoy.getRawButton(1) == true)
+		{
+			Basket1.set(true);
+			Basket2.set(false);
+			
+			if(SecondaryJoy.getRawButton(2) == true)
+			{
+				Clamp1.set(true);
+				Clamp2.set(false);
+			}
+			else
+			{
+				Clamp1.set(false);
+				Clamp2.set(true);
+			}
+			
+		}
+		else
+		{
+			Basket1.set(false);
+			Basket2.set(true);
+		}
+						
+	}
+
+	/**
+	 * This function is called periodically during test mode
+	 */
+	@Override
+	public void testPeriodic() {
 		
-		auton.addDefault("Center Gear", new CommandGroup(){{
-			addSequential(new SetPocket(true));
-			addSequential(new DriveStraightFor(1.1, 0, -0.5));
-			addSequential(new WaitCommand(0.7));
-			addSequential(new DriveStraightFor(0.1, 0, 0.5));
-			addSequential(new SetClaw(true));
-		}});
-		auton.addObject("Side Mobility", new DriveStraightFor(2.7, 0, -0.5));
-		SmartDashboard.putData("Autonomous", auton);
-	}
-	@Override
-	public void autonomousInit(){
-		drive.resetAngle();
-		drive.resetDistance();
-		autonomousCommand = auton.getSelected();
-		if(autonomousCommand != null) autonomousCommand.start();
-	}
-	@Override
-	public void autonomousPeriodic(){
-		Scheduler.getInstance().run();
-	}
-	@Override
-	public void teleopInit(){
-		if(autonomousCommand != null) autonomousCommand.cancel();
-		gearClaw.close();
-		gearPocket.retract();
-		gearRamp.retract();
-	}
-	@Override
-	public void teleopPeriodic(){
-		Scheduler.getInstance().run();
-	}
-	@Override
-	public void testInit(){}
-	@Override
-	public void testPeriodic(){lights.set(1);}//No scheduler so the robot idles
-	@Override
-	public void disabledInit(){}
-	@Override
-	public void disabledPeriodic(){}
-	public void robotPeriodic(){
-		lights.set(1);
-		SmartDashboard.putNumber("Angle", drive.getAngle());
-		SmartDashboard.putBoolean("AngleReady", drive.isAngleReady());
-		SmartDashboard.putNumber("Distance", drive.getDistance());
-		SmartDashboard.putBoolean("Pressurized", !compressor.getPressureSwitchValue());
-		SmartDashboard.putBoolean("PressureCharging", compressor.enabled());
-		SmartDashboard.putBoolean("PressureControlled", compressor.getClosedLoopControl());
-		SmartDashboard.putNumber("PressureCurrent", compressor.getCompressorCurrent());
+		
 	}
 }
+
