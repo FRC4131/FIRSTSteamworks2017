@@ -1,13 +1,5 @@
 #Eclipse
-/.classpath
-/.project
-/.settings/
 /bin/
-
-#FIRST
-/build/
-/dist/
-/sysProps.xml
 
 #Miscellanious
 /misc/
