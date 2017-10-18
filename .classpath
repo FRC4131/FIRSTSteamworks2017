@@ -5,5 +5,7 @@
 	<classpathentry kind="lib" path="C:/Users/obermat20/wpilib/user/java/lib/CTRLib.jar"/>
 	<classpathentry kind="lib" path="C:/Users/obermat20/wpilib/java/current/lib/WPILib.jar"/>
 	<classpathentry kind="lib" path="C:/navx-mxp/java/lib/navx_frc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/obermat20/wpilib/java/current/lib/cscore.jar"/>
+	<classpathentry kind="lib" path="C:/Users/obermat20/wpilib/java/current/lib/NetworkTables.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
