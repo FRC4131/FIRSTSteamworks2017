@@ -1,18 +1,8 @@
 package org.usfirst.frc.team4131.robot.commands;
 
 import org.usfirst.frc.team4131.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- * ========== Test Procedure ==========
- * Ran on Robot in a Box
- * We will enable teleop, and expect the motor to turn at half speed.
- * Test passed
- * ====================================
- * @author Calvin
- * @since 2/17/2017
- */
 public class EngageClimber extends Command {
 	public EngageClimber() {
 		requires(Robot.climber);
