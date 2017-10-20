@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4131.robot.commands;
 
 import org.usfirst.frc.team4131.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 public class SetClaw extends Command{
@@ -14,5 +13,7 @@ public class SetClaw extends Command{
 		if(open) Robot.gearClaw.open();
 		else Robot.gearClaw.close();
 	}
-	protected boolean isFinished(){return true;}
+	protected boolean isFinished(){
+		return true;
+	}
 }
